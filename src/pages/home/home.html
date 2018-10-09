@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Hello Tourist</ion-title>
+  </ion-navbar>
+  <style>.black{color: black;}</style>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div>
+	
+	  <ion-item>
+		<ion-label class="black">MONORAIL STATIONS</ion-label>
+		<ion-select [(ngModel)]="station">
+			<ion-option value="KL_SENTRAL">KL Sentral</ion-option>
+			<ion-option value="IMBI">Imbi</ion-option>
+			<ion-option value="BUKIT_BINTANG">Bukit Bintang</ion-option>
+			<ion-option value="MEDAN_TUANKU">Medan Tuanku</ion-option>
+			<ion-option value="CHOW_KIT">Chow Kit</ion-option>
+		</ion-select>
+	  </ion-item>
+
+	  <ion-item>
+		<ion-label class="black">HOTEL DISTANCE</ion-label>
+		<ion-select [(ngModel)]="hDistance">
+			<ion-option value="NEAR">Near (20m - 100m)</ion-option>
+			<ion-option value="INTERMEDIATE">Intermediate (100m - 500m)</ion-option>
+			<ion-option value="FAR">Far (> 500m)</ion-option>
+		</ion-select>
+	  </ion-item>
+
+	  <ion-item>
+		<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>
+		<ion-select [(ngModel)]="hRate">
+			<ion-option value="LOW">Low (<  RM75)</ion-option>
+			<ion-option value="NORMAL">Normal (RM 76 - RM 250)</ion-option>
+			<ion-option value="HIGH">High (> RM250)</ion-option>
+		</ion-select>
+	  </ion-item>
+	  
+	  <ion-item>
+		<ion-label class="black">RESTAURANT RATE</ion-label>
+		<ion-select [(ngModel)]="rRate">
+			<ion-option value="LOW">Below RM 30</ion-option>
+			<ion-option value="NORMAL">Between RM 31 & RM 69</ion-option>
+			<ion-option value="HIGH">RM 70 and above</ion-option>
+		</ion-select>
+	  </ion-item>
+	  
+	  <ion-item>
+		<ion-label>SHOPPING MALL</ion-label>
+		<ion-toggle [(ngModel)]="mall"></ion-toggle>
+	  </ion-item>
+	  
+	  <button ion-button (click)="result()">Search</button>
+	  
+  </div>
+  
+</ion-content>

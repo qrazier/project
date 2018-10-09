@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Result</ion-title>
+  <ion-buttons end>
+	<button ion-button icon-only (click)="closeModal()"><ion-icon name="close"></ion-icon></button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+    
+<ion-content padding>
+  <div id="floating-panel">
+    <b>Start: </b>
+    <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
+      <option value="klang, selangor">Klang</option>
+      <option value="kl sentral, kuala lumpur sentral">KL Sentral</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+    </select><br>
+    <b>End: </b>
+    <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">
+      <option value="shah alam, selangor">Shah Alam</option>
+      <option value="stesen monorail imbi, jalan imbi">Imbi</option>
+      <option value="joplin, mo">Joplin, MO</option>
+      <option value="oklahoma city, ok">Oklahoma City</option>
+      <option value="amarillo, tx">Amarillo</option>
+    </select>
+    </div>
+    <div #map id="map"></div>
+</ion-content>
