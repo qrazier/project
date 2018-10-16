@@ -1,5 +1,4 @@
-/*
-var path = require('path');
+/*var path = require('path');
 var useDefaultConfig = require('@ionic/app-scripts/config/webpack.config.js');
 
 module.exports = function () {
@@ -8,5 +7,4 @@ module.exports = function () {
   };
 
   return useDefaultConfig;
-};
-*/
+};*/

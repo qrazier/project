@@ -8,6 +8,7 @@ import { ResultPage } from '../result/result';
   selector: 'page-home',
   templateUrl: 'home.html',
 })
+
 export class HomePage {
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
@@ -21,7 +22,7 @@ export class HomePage {
 		this.afAuth.authState.subscribe(data => {
 			if(data && data.email && data.uid){
 				this.toast.create({
-				message: 'Welcome to APP_NAME, ${data.email}',
+				message: 'Welcome to The Tourist, ${data.email}',
 				duration: 3000
 				}).present();
 			}
@@ -33,6 +34,11 @@ export class HomePage {
 			}
 		});
   }
+  public station: any;
+  public hDistance: any;
+  public hRate: any;
+  public rRate: any;
+  public mall: any;
   
   stationOpt(){
 		let stationOp: string = this.station;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, Events} from 'ionic-angular';
+import { MapPage } from '../map/map';
 
 @IonicPage()
 @Component({
@@ -28,6 +29,10 @@ export class ResultPage {
     }
   }
 
+  map(){
+    this.navCtrl.push(MapPage);
+  }
+  
   ionViewDidLoad(){
     //console.log("Hello");
   }

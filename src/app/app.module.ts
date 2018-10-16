@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { ResultPage } from '../pages/result/result';
+import { MapPage } from '../pages/map/map';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     MyApp,
     ItemDetailsPage,
     ListPage,
-	  ResultPage
+    ResultPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     MyApp,
     ItemDetailsPage,
     ListPage,
-	  ResultPage
+    ResultPage,
+    MapPage
   ],
   providers: [
     StatusBar,
