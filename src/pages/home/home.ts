@@ -9,17 +9,6 @@ import { ResultPage } from '../result/result';
   templateUrl: 'home.html',
 })
 export class HomePage {
-	
-  station: string ='';
-  stationOp: string = '';
-  hDistance:string = '';
-  hDistanceOp: string = '';
-  hRate: string = '';
-  hRateOp: string = '';
-  rRate: string = '';
-  rRateOp: string = '';
-  mall: string = '';
-  mallOp: string = '';
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
@@ -28,65 +17,75 @@ export class HomePage {
   ionViewWillLoad(){
     this.events.subscribe('searching', (data) => {
 	  console.log(data);
-	});
-	this.afAuth.authState.subscribe(data => {
-	  if(data && data.email && data.uid){
-	    this.toast.create({
-		  message: 'Welcome to APP_NAME, ${data.email}',
-		  duration: 3000
-	    }).present();
-	  }
-	  else{
-		this.toast.create({
-		  message: 'Could not find authentication details',
-		  duration: 3000
-	    }).present();
-	  }
-	});
+		});
+		this.afAuth.authState.subscribe(data => {
+			if(data && data.email && data.uid){
+				this.toast.create({
+				message: 'Welcome to APP_NAME, ${data.email}',
+				duration: 3000
+				}).present();
+			}
+			else{
+			this.toast.create({
+				message: 'Could not find authentication details',
+				duration: 3000
+				}).present();
+			}
+		});
   }
   
-  public stationOpt(){
-	console.log(this.station);
-	let stationOp = this.station;
+  stationOpt(){
+		let stationOp: string = this.station;
+		return stationOp;	
   }
-  public hDistanceOpt(){
-	//console.log(this.hDistance);
-	let hDistanceOp = this.hDistance;
+  hDistanceOpt(){
+		let hDistanceOp = this.hDistance;
+		return hDistanceOp;
   }
-  public hRateOpt(){
-	//console.log(this.hRate);
-	let hRateOp = this.hRate;
+  hRateOpt(){
+		let hRateOp = this.hRate;
+		return hRateOp;
   }
-  public rRateOpt(){
-	//console.log(this.rRate);
-	let rRateOp = this.rRate;
-  }
-  public mallOpt(){
-	console.log(this.mall);
-	let mallOp = this.mall;
+  rRateOpt(){
+		let rRateOp = this.rRate;
+		return rRateOp;
+	}
+	
+  mallOpt(){
+		let mallOp: string = '';
+		if(this.mall){
+			 mallOp = 'YES';
+		}else{
+			 mallOp = 'NO';
+		}
+		
+		return mallOp;
   }
   
   result(){
     
-	let station = this.stationOpt();
-	this.hDistanceOpt();
-	this.hRateOpt();
-	this.rRateOpt();
-	this.mallOpt();
-	
-	console.log(station);
-	this.navCtrl.push(ResultPage);
-	
-	//modal.present();
-	
-	
-	/*this.navCtrl.push(ResultPage, {
-		station: this.station,
-		hDistance: this.hDistance,
-		hRate: this.hRate,
-		rRate: this.rRate,
-		mall: this.mall
-	});*/
-  }
-  
+		let station = this.stationOpt();
+		let hDistance = this.hDistanceOpt();
+		let hRate = this.hRateOpt();
+		let rRate = this.rRateOpt();
+		let mall = this.mallOpt();
+		
+		//console.log(station, hDistance, hRate, rRate, mall);
+		
+		this.navCtrl.push(ResultPage, {
+			station: station,
+			hDistance: hDistance,
+			hRate: hRate,
+			rRate: rRate,
+			mall: mall
+		});
+			
+		/*this.navCtrl.push(ResultPage, {
+			station: this.station,
+			hDistance: this.hDistance,
+			hRate: this.hRate,
+			rRate: this.rRate,
+			mall: this.mall
+		});*/
+		}
 }

@@ -21,21 +21,21 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     MyApp,
     ItemDetailsPage,
     ListPage,
-	ResultPage
+	  ResultPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-	AngularFireModule.initializeApp(FIREBASE_CONFIG),
-	AngularFireAuthModule,
-	AngularFireDatabaseModule
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     ItemDetailsPage,
     ListPage,
-	ResultPage
+	  ResultPage
   ],
   providers: [
     StatusBar,
