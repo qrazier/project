@@ -1,14 +1,14 @@
 webpackJsonp([0],{
 
-/***/ 713:
+/***/ 711:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResultPageModule", function() { return ResultPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__result__ = __webpack_require__(717);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(716);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ResultPageModule = /** @class */ (function () {
-    function ResultPageModule() {
+var HomePageModule = /** @class */ (function () {
+    function HomePageModule() {
     }
-    ResultPageModule = __decorate([
+    HomePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__result__["a" /* ResultPage */],
+                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__result__["a" /* ResultPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
             ],
         })
-    ], ResultPageModule);
-    return ResultPageModule;
+    ], HomePageModule);
+    return HomePageModule;
 }());
 
-//# sourceMappingURL=result.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ }),
 
-/***/ 717:
+/***/ 716:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__result_result__ = __webpack_require__(715);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,61 +59,95 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ResultPage = /** @class */ (function () {
-    function ResultPage(navCtrl, navParams, viewCtrl, events) {
+
+
+var HomePage = /** @class */ (function () {
+    function HomePage(afAuth, toast, navCtrl, navParams, modalCtrl, events) {
+        this.afAuth = afAuth;
+        this.toast = toast;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
+        this.modalCtrl = modalCtrl;
         this.events = events;
-        this.start = 'klang, selangor';
-        this.end = 'shah alam, selangor';
-        this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.station = '';
+        this.stationOp = '';
+        this.hDistance = '';
+        this.hDistanceOp = '';
+        this.hRate = '';
+        this.hRateOp = '';
+        this.rRate = '';
+        this.rRateOp = '';
+        this.mall = '';
+        this.mallOp = '';
     }
-    ResultPage.prototype.ionViewDidLoad = function () {
-        console.log("Hello");
-        this.initMap();
-    };
-    ResultPage.prototype.initMap = function () {
-        this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            zoom: 10,
-            center: { lat: 3.134, lng: 101.686 }
-        });
-        this.directionsDisplay.setMap(this.map);
-    };
-    ResultPage.prototype.calculateAndDisplayRoute = function () {
+    HomePage.prototype.ionViewWillLoad = function () {
         var _this = this;
-        this.directionsService.route({
-            origin: this.start,
-            destination: this.end,
-            travelMode: 'DRIVING'
-        }, function (response, status) {
-            if (status === 'OK') {
-                _this.directionsDisplay.setDirections(response);
+        this.events.subscribe('searching', function (data) {
+            console.log(data);
+        });
+        this.afAuth.authState.subscribe(function (data) {
+            if (data && data.email && data.uid) {
+                _this.toast.create({
+                    message: 'Welcome to APP_NAME, ${data.email}',
+                    duration: 3000
+                }).present();
             }
             else {
-                window.alert('Directions request failed due to ' + status);
+                _this.toast.create({
+                    message: 'Could not find authentication details',
+                    duration: 3000
+                }).present();
             }
         });
     };
-    ResultPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
+    HomePage.prototype.stationOpt = function () {
+        console.log(this.station);
+        var stationOp = this.station;
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
-    ], ResultPage.prototype, "mapElement", void 0);
-    ResultPage = __decorate([
+    HomePage.prototype.hDistanceOpt = function () {
+        //console.log(this.hDistance);
+        var hDistanceOp = this.hDistance;
+    };
+    HomePage.prototype.hRateOpt = function () {
+        //console.log(this.hRate);
+        var hRateOp = this.hRate;
+    };
+    HomePage.prototype.rRateOpt = function () {
+        //console.log(this.rRate);
+        var rRateOp = this.rRate;
+    };
+    HomePage.prototype.mallOpt = function () {
+        console.log(this.mall);
+        var mallOp = this.mall;
+    };
+    HomePage.prototype.result = function () {
+        var station = this.stationOpt();
+        this.hDistanceOpt();
+        this.hRateOpt();
+        this.rRateOpt();
+        this.mallOpt();
+        console.log(station);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__result_result__["a" /* ResultPage */]);
+        //modal.present();
+        /*this.navCtrl.push(ResultPage, {
+            station: this.station,
+            hDistance: this.hDistance,
+            hRate: this.hRate,
+            rRate: this.rRate,
+            mall: this.mall
+        });*/
+    };
+    HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-result',template:/*ion-inline-start:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\result\result.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Result</ion-title>\n  <ion-buttons end>\n	<button ion-button icon-only (click)="closeModal()"><ion-icon name="close"></ion-icon></button>\n  </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n    \n<ion-content padding>\n  <div id="floating-panel">\n    <b>Start: </b>\n    <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">\n      <option value="klang, selangor">Klang</option>\n      <option value="kl sentral, kuala lumpur sentral">KL Sentral</option>\n      <option value="joplin, mo">Joplin, MO</option>\n      <option value="oklahoma city, ok">Oklahoma City</option>\n      <option value="amarillo, tx">Amarillo</option>\n    </select><br>\n    <b>End: </b>\n    <select [(ngModel)]="end" id="end" (change)="calculateAndDisplayRoute()">\n      <option value="shah alam, selangor">Shah Alam</option>\n      <option value="stesen monorail imbi, jalan imbi">Imbi</option>\n      <option value="joplin, mo">Joplin, MO</option>\n      <option value="oklahoma city, ok">Oklahoma City</option>\n      <option value="amarillo, tx">Amarillo</option>\n    </select>\n    </div>\n    <div #map id="map"></div>\n</ion-content>'/*ion-inline-end:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\result\result.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Hello Tourist</ion-title>\n  </ion-navbar>\n  <style>.black{color: black;}</style>\n\n</ion-header>\n\n\n<ion-content padding>\n\n	<div>\n	\n	  <ion-item>\n		<ion-label class="black">MONORAIL STATIONS</ion-label>\n		<ion-select (ionChange)="stationOpt();" [(ngModel)]="station">\n			<ion-option value="KL SENTRAL">KL Sentral</ion-option>\n			<ion-option value="IMBI">Imbi</ion-option>\n			<ion-option value="BUKIT BINTANG">Bukit Bintang</ion-option>\n			<ion-option value="MEDAN TUANKU">Medan Tuanku</ion-option>\n			<ion-option value="CHOW KIT">Chow Kit</ion-option>\n		</ion-select>\n	  </ion-item>\n\n	  <ion-item>\n		<ion-label class="black">HOTEL DISTANCE</ion-label>\n		<ion-select (ionChange)="hDistanceOpt();" [(ngModel)]="hDistance">\n			<ion-option value="NEAR">Near (20m - 100m)</ion-option>\n			<ion-option value="INTERMEDIATE">Intermediate (100m - 500m)</ion-option>\n			<ion-option value="FAR">Far (> 500m)</ion-option>\n		</ion-select>\n	  </ion-item>\n\n	  <ion-item>\n		<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>\n		<ion-select (ionChange)="hRateOpt();" [(ngModel)]="hRate">\n			<ion-option value="LOW">Low (<  RM75)</ion-option>\n			<ion-option value="NORMAL">Normal (RM 76 - RM 250)</ion-option>\n			<ion-option value="HIGH">High (> RM250)</ion-option>\n		</ion-select>\n	  </ion-item>\n	  \n	  <ion-item>\n		<ion-label class="black">RESTAURANT RATE</ion-label>\n		<ion-select (ionChange)="rRateOpt();" [(ngModel)]="rRate">\n			<ion-option value="LOW">Below RM 30</ion-option>\n			<ion-option value="NORMAL">Between RM 31 & RM 69</ion-option>\n			<ion-option value="HIGH">RM 70 and above</ion-option>\n		</ion-select>\n	  </ion-item>\n	  \n	  <ion-item>\n		<ion-label>SHOPPING MALL</ion-label>\n		<ion-toggle (ionChange)="mallOpt();" [(ngModel)]="mall"></ion-toggle>\n	  </ion-item>\n	  \n	  <button ion-button (click)="result()">Search</button>\n	  \n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\home\home.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ViewController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */]) === "function" && _e || Object])
-    ], ResultPage);
-    return ResultPage;
-    var _a, _b, _c, _d, _e;
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* ModalController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */]) === "function" && _f || Object])
+    ], HomePage);
+    return HomePage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
-//# sourceMappingURL=result.js.map
+//# sourceMappingURL=home.js.map
 
 /***/ })
 

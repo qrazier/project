@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ResultPage } from '../result/result';
 
 @IonicPage()
 @Component({
@@ -8,6 +9,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'home.html',
 })
 export class HomePage {
+	
+  station: string ='';
+  stationOp: string = '';
+  hDistance:string = '';
+  hDistanceOp: string = '';
+  hRate: string = '';
+  hRateOp: string = '';
+  rRate: string = '';
+  rRateOp: string = '';
+  mall: string = '';
+  mallOp: string = '';
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
     public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
@@ -33,19 +45,38 @@ export class HomePage {
 	});
   }
   
+  public stationOpt(){
+	console.log(this.station);
+	let stationOp = this.station;
+  }
+  public hDistanceOpt(){
+	//console.log(this.hDistance);
+	let hDistanceOp = this.hDistance;
+  }
+  public hRateOpt(){
+	//console.log(this.hRate);
+	let hRateOp = this.hRate;
+  }
+  public rRateOpt(){
+	//console.log(this.rRate);
+	let rRateOp = this.rRate;
+  }
+  public mallOpt(){
+	console.log(this.mall);
+	let mallOp = this.mall;
+  }
+  
   result(){
     
-	let data = {
-		/*station: this.station,
-		hDistance: this.hDistance,
-		hRate: this.hRate,
-		rRate: this.rRate,
-		mall: this.mall*/
-	};
-	//let modal = this.modalCtrl.create(ResultPage);
+	let station = this.stationOpt();
+	this.hDistanceOpt();
+	this.hRateOpt();
+	this.rRateOpt();
+	this.mallOpt();
 	
-	this.events.publish('searching', data);
+	console.log(station);
 	this.navCtrl.push(ResultPage);
+	
 	//modal.present();
 	
 	
@@ -56,7 +87,6 @@ export class HomePage {
 		rRate: this.rRate,
 		mall: this.mall
 	});*/
-	
   }
   
 }

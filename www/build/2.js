@@ -5,10 +5,10 @@ webpackJsonp([2],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(716);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(717);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,31 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
+var RegisterPageModule = /** @class */ (function () {
+    function RegisterPageModule() {
     }
-    LoginPageModule = __decorate([
+    RegisterPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
             ],
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], RegisterPageModule);
+    return RegisterPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=register.module.js.map
 
 /***/ }),
 
-/***/ 716:
+/***/ 717:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(356);
@@ -94,44 +94,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var LoginPage = /** @class */ (function () {
-    function LoginPage(afAuth, navCtrl, navParams) {
+var RegisterPage = /** @class */ (function () {
+    function RegisterPage(afAuth, navCtrl, navParams) {
         this.afAuth = afAuth;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.user = {};
     }
-    LoginPage.prototype.login = function (user) {
+    RegisterPage.prototype.register = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var result;
+            var result, e_1;
             return __generator(this, function (_a) {
-                try {
-                    result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
-                    if (result) {
-                        this.navCtrl.setRoot('HomePage');
-                    }
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)];
+                    case 1:
+                        result = _a.sent();
+                        console.log(result);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        e_1 = _a.sent();
+                        console.error(e_1);
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
-                catch (e) {
-                    console.error(e);
-                }
-                return [2 /*return*/];
             });
         });
     };
-    LoginPage.prototype.register = function () {
-        this.navCtrl.push('RegisterPage');
-    };
-    LoginPage = __decorate([
+    RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\login\login.html"*/'<!--\n  Generated template for the LoginPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Login</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Email Address</ion-label>\n	<ion-input type="text" [(ngModel)]="user.email"></ion-input>\n  </ion-item>\n  \n  <ion-item>\n    <ion-label floating>Password</ion-label>\n	<ion-input type="password" [(ngModel)]="user.password"></ion-input>\n  </ion-item>\n  \n  <button ion-button (click)="login(user)">Login</button>\n  <button ion-button color="light" (click)="register()">Register</button>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\login\login.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\register\register.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-item>\n    <ion-label floating>Email Address</ion-label>\n	<ion-input type="text" [(ngModel)]="user.email"></ion-input>\n  </ion-item>\n  \n  <ion-item>\n    <ion-label floating>Password</ion-label>\n	<ion-input type="password" [(ngModel)]="user.password"></ion-input>\n  </ion-item>\n  \n  <button ion-button (click)="register(user)">Register</button>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\CODEFREAK\IONIC\tourist\src\pages\register\register.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["AngularFireAuth"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
-    ], LoginPage);
-    return LoginPage;
+    ], RegisterPage);
+    return RegisterPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=register.js.map
 
 /***/ })
 

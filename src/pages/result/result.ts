@@ -23,6 +23,7 @@ export class ResultPage {
   
   ionViewDidLoad(){
     console.log("Hello");
+	console.log(station);
 	this.initMap();
   }
 
@@ -39,7 +40,7 @@ export class ResultPage {
     this.directionsService.route({
       origin: this.start,
       destination: this.end,
-      travelMode: 'DRIVING'
+      travelMode: 'WALKING'
     }, (response, status) => {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
