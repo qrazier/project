@@ -13,6 +13,15 @@
   <p>Restaurant Rate: {{rRate}}</p>
   <p>Mall: {{mall}}</p>
 
+  <ion-list>
+
+    <!-- Repeat the ion-item for as many items that we have inside of the hotel list. -->
+    <ion-item *ngFor="let item of hotelRef$ | async" detail-push [navPush]="MapPage" [navParams]="{item: item}">
+      <h2>Hotel Name: {{item.name}}</h2>
+      <h3>Hotel Station: {{item.station}}</h3>
+    </ion-item>
+  </ion-list>
+
   <ion-row>
     <ion-col style="text-align: center;">
         <button ion-button (click)="map()">Go!</button>		

@@ -7,6 +7,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { ResultPage } from '../pages/result/result';
 import { MapPage } from '../pages/map/map';
+import { AddHotelPage } from '../pages/add-hotel/add-hotel';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +17,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
 import { FIREBASE_CONFIG } from './app.firebase.config';
+import { HotelListProvider } from '../providers/hotel-list/hotel-list';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     ItemDetailsPage,
     ListPage,
     ResultPage,
-    MapPage
+    MapPage,
+    AddHotelPage
   ],
   imports: [
     BrowserModule,
@@ -38,13 +41,15 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
     ItemDetailsPage,
     ListPage,
     ResultPage,
-    MapPage
+    MapPage,
+    AddHotelPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    User
+    User,
+    HotelListProvider
   ]
 })
 export class AppModule {}

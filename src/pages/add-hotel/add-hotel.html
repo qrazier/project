@@ -1,0 +1,70 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add Hotel <ion-icon name="hotel"></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating >Hotel Name</ion-label>
+    <ion-input type="text" [(ngModel)]="hotel.name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Hotel Station</ion-label>
+    <ion-select [(ngModel)]="hotel.station">
+      <ion-option value="KL Sentral">KL Sentral</ion-option>
+      <ion-option value="Imbi">Imbi</ion-option>
+      <ion-option value="Bukit Bintang">Bukit Bintang</ion-option>
+      <ion-option value="Medan Tuanku">Medan Tuanku</ion-option>
+      <ion-option value="Chow Kit">Chow Kit</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Hotel Distance</ion-label>
+    <ion-select [(ngModel)]="hotel.hDistance">
+      <ion-option value="Near">Near (< 50m)</ion-option>
+      <ion-option value="Intermediate">Intermediate (50m - 200m)</ion-option>
+      <ion-option value="Far">Far (> 200m)</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Hotel Rate</ion-label>
+    <ion-select [(ngModel)]="hotel.hRate">
+      <ion-option value="Low">Low (< RM100)</ion-option>
+      <ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
+      <ion-option value="High">High (> RM250)</ion-option>
+    </ion-select>
+  </ion-item>
+  <!--
+    re: plan to make a star-rate based.
+    npm: https://github.com/melwinVincent/ionic3-star-rating
+    code: https://stackblitz.com/edit/ionic3-star-rating?file=pages%2Fabout%2Fabout.ts
+    gudluck!
+  -->
+    
+  <ion-item>
+    <ion-label floating>Restaurant Rate</ion-label>
+    <ion-select [(ngModel)]="hotel.rRate">
+      <ion-option value="Low">Below RM 20</ion-option>
+      <ion-option value="Normal">Between RM 21 & RM 59</ion-option>
+      <ion-option value="High">RM 60 and above</ion-option>
+    </ion-select>
+  </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Mall Availability</ion-label>
+      <ion-select [(ngModel)]="hotel.mall">
+        <ion-option value="Yes">Yes</ion-option>
+        <ion-option value="No">No</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <button ion-button block (click)="addHotel(hotel)"> Add Hotel</button>
+</ion-content>

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 import { ResultPage } from '../result/result';
+import { AddHotelPage } from '../add-hotel/add-hotel';
 
 @IonicPage()
 @Component({
@@ -12,7 +15,8 @@ import { ResultPage } from '../result/result';
 export class HomePage {
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-    public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
+	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events, 
+	public afd: AngularFireDatabase) {
   }
 
   ionViewWillLoad(){
@@ -64,34 +68,27 @@ export class HomePage {
 		}else{
 			 mallOp = 'NO';
 		}
-		
 		return mallOp;
   }
   
   result(){
     
-		let station = this.stationOpt();
-		let hDistance = this.hDistanceOpt();
-		let hRate = this.hRateOpt();
-		let rRate = this.rRateOpt();
-		let mall = this.mallOpt();
-		
-		//console.log(station, hDistance, hRate, rRate, mall);
-		
-		this.navCtrl.push(ResultPage, {
-			station: station,
-			hDistance: hDistance,
-			hRate: hRate,
-			rRate: rRate,
-			mall: mall
-		});
-			
-		/*this.navCtrl.push(ResultPage, {
-			station: this.station,
-			hDistance: this.hDistance,
-			hRate: this.hRate,
-			rRate: this.rRate,
-			mall: this.mall
-		});*/
-		}
+	let station = this.stationOpt();
+	let hDistance = this.hDistanceOpt();
+	let hRate = this.hRateOpt();
+	let rRate = this.rRateOpt();
+	let mall = this.mallOpt();
+	
+	this.navCtrl.push(ResultPage, {
+		station: station,
+		hDistance: hDistance,
+		hRate: hRate,
+		rRate: rRate,
+		mall: mall
+	});
+  }
+
+  addHotel(){
+	this.navCtrl.push(AddHotelPage);
+  }
 }

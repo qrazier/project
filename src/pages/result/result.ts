@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Events} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import { HotelListProvider } from './../../providers/hotel-list/hotel-list';
+
 import { MapPage } from '../map/map';
+import { Hotel } from '../../models/hotel';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -15,25 +19,42 @@ export class ResultPage {
   rRate: string;
   mall: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public events: Events) {
-    this.station = this.navParams.data.station;
-    this.hDistance = this.navParams.data.hDistance;
-    this.hRate = this.navParams.data.hRate;
-    this.rRate = this.navParams.data.rRate;
-    this.mall = this.navParams.data.mall;
+  hotelRef$: Observable<Hotel[]>;
+
+  params: Object;
+  pushPage: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
+    private hotelList: HotelListProvider) {
+      
+      this.pushPage = MapPage;
+      
+      this.hotelRef$ = this.hotelList
+        .getHotelList()
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes.map(c => ({
+              key: c.payload.key, ...c.payload.val(),
+            }));
+          }
+      );
+
+      //get data from user
+      this.station = this.navParams.data.station;
+      this.hDistance = this.navParams.data.hDistance;
+      this.hRate = this.navParams.data.hRate;
+      this.rRate = this.navParams.data.rRate;
+      this.mall = this.navParams.data.mall;
   }
-  
+    
   returnList(){
     if(this.station == 'KL SENTRAL'){
-
+      
     }
   }
 
   map(){
     this.navCtrl.push(MapPage);
-  }
-  
-  ionViewDidLoad(){
-    //console.log("Hello");
   }
 }
