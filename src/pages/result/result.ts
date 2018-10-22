@@ -49,15 +49,40 @@ export class ResultPage {
   }
     
   returnList(item){
-    if(item.station == this.station){
-      return true;
+    if(item.station != null || item.hDistance != null || item.hRate != null || item.rRate != null){
+      if(item.station == this.station && item.hDistance == this.hDistance && item.hRate == this.hRate && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.station == this.station && item.hDistance == this.hDistance && item.hRate == this.hRate)
+      {  return true;}
+      else if(item.station == this.station && item.hRate == this.hRate && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.station == this.station && item.hDistance == this.hDistance && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.hDistance == this.hDistance && item.hRate == this.hRate && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.station == this.station && item.hDistance == this.hDistance)
+      {  return true;}
+      else if(item.station == this.station && item.hRate == this.hRate)
+      {  return true;}
+      else if(item.station == this.station && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.hDistance == this.hDistance && item.hRate == this.hRate)
+      {  return true;}
+      else if(item.hDistance == this.hDistance && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.hRate == this.hRate && item.rRate == this.rRate)
+      {  return true;}
+      else if(item.station == this.station)
+      {  return true;}
+      else if(item.hDistance == this.hDistance)
+      {  return true;}
+      else if(item.hRate == this.hRate)
+      {  return true;}
+      else if(item.rRate == this.rRate)
+      {  return true;}
     }
-    else if(item.distance == this.hDistance){
-      return true;
-    }
-    else if(item.mall == this.mall){
-      return true;
-    }
+    else if(item.mall == this.mall)
+      {  return true;}
     else return false;
   }
 
