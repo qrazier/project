@@ -32,6 +32,7 @@ export class AddHotelPage {
     .then(ref => {
       this.navCtrl.push(ResultPage, {key: ref.key});
     });
+    this.navCtrl.pop();
   }
 
 }

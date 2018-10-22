@@ -48,13 +48,24 @@ export class ResultPage {
       this.mall = this.navParams.data.mall;
   }
     
-  returnList(){
-    if(this.station == 'KL SENTRAL'){
-      
+  returnList(item){
+    if(item.station == this.station){
+      return true;
     }
+    else if(item.distance == this.hDistance){
+      return true;
+    }
+    else if(item.mall == this.mall){
+      return true;
+    }
+    else return false;
   }
 
   map(){
     this.navCtrl.push(MapPage);
+  }
+
+  ionViewDidLoad(){
+  //this.returnList(item);
   }
 }

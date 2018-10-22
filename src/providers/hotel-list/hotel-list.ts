@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Hotel } from '../../models/hotel'
 
 @Injectable()
@@ -7,7 +7,7 @@ export class HotelListProvider {
 
   private hotelRef = this.database.list<Hotel>('hotel');
   constructor(private database: AngularFireDatabase) {
-    
+
   }
 
   getHotelList(){
@@ -24,5 +24,9 @@ export class HotelListProvider {
 
   removeHotel(hotel: Hotel){
     return this.hotelRef.remove(hotel.key);
+  }
+
+  getResult(hotel: Hotel){
+    //this.hotelRef.list();
   }
 }

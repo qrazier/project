@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 import { ResultPage } from '../result/result';
 import { AddHotelPage } from '../add-hotel/add-hotel';
+import { MyApp } from '../../app/app.component';
 
 @IonicPage()
 @Component({
@@ -15,8 +15,7 @@ import { AddHotelPage } from '../add-hotel/add-hotel';
 export class HomePage {
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events, 
-	public afd: AngularFireDatabase) {
+	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events, public MyApp: MyApp) {
   }
 
   ionViewWillLoad(){
@@ -26,7 +25,7 @@ export class HomePage {
 		this.afAuth.authState.subscribe(data => {
 			if(data && data.email && data.uid){
 				this.toast.create({
-				message: 'Welcome to The Tourist, ${data.email}',
+				message: 'Welcome to MyApp, ${data.email}',
 				duration: 3000
 				}).present();
 			}
@@ -38,14 +37,14 @@ export class HomePage {
 			}
 		});
   }
-  public station: any;
-  public hDistance: any;
-  public hRate: any;
-  public rRate: any;
+  public station: string = '';
+  public hDistance: string = '';
+  public hRate: string = '';
+  public rRate: string = '';
   public mall: any;
   
   stationOpt(){
-		let stationOp: string = this.station;
+		let stationOp = this.station;
 		return stationOp;	
   }
   hDistanceOpt(){
@@ -64,9 +63,9 @@ export class HomePage {
   mallOpt(){
 		let mallOp: string = '';
 		if(this.mall){
-			 mallOp = 'YES';
+			 mallOp = 'Yes';
 		}else{
-			 mallOp = 'NO';
+			 mallOp = 'No';
 		}
 		return mallOp;
   }
