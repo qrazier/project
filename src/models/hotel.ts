@@ -6,6 +6,4 @@ export interface Hotel{
     hRate: string;
     rRate: string;
     mall: string;
-    lat: string;
-    long: string;
 } 
