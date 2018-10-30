@@ -11,26 +11,39 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  start = 'klang, selangor';
-  end = 'shah alam, selangor';
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
+  hotel: any;
+  start: any;
+  end: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.hotel = this.navParams.data.item;
+    this.start = "Monorail " + this.hotel.station;
+    this.end = this.hotel.name;
   }
+
+  
 
   ionViewDidLoad(){
     console.log("Hello");
     this.initMap();
+    console.log(this.start);
+    console.log(this.end);
   }
 
   initMap() {
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      zoom: 10,
-      center: {lat: 3.134, lng: 101.686}
+      zoom: 20,
+      center: {lat: 3.134, lng: 101.686},
+      disableDefaultUI: true,
+      gestureHandling: "none",
+      clickableIcons: false,
     });
 
     this.directionsDisplay.setMap(this.map);
+    this.calculateAndDisplayRoute();
   }
   
   calculateAndDisplayRoute() {

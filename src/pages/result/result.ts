@@ -49,40 +49,39 @@ export class ResultPage {
   }
     
   returnList(item){
-    if(item.station != null || item.hDistance != null || item.hRate != null || item.rRate != null){
-      if(item.station == this.station && item.hDistance == this.hDistance && item.hRate == this.hRate && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.station == this.station && item.hDistance == this.hDistance && item.hRate == this.hRate)
-      {  return true;}
-      else if(item.station == this.station && item.hRate == this.hRate && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.station == this.station && item.hDistance == this.hDistance && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.hDistance == this.hDistance && item.hRate == this.hRate && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.station == this.station && item.hDistance == this.hDistance)
-      {  return true;}
-      else if(item.station == this.station && item.hRate == this.hRate)
-      {  return true;}
-      else if(item.station == this.station && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.hDistance == this.hDistance && item.hRate == this.hRate)
-      {  return true;}
-      else if(item.hDistance == this.hDistance && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.hRate == this.hRate && item.rRate == this.rRate)
-      {  return true;}
-      else if(item.station == this.station)
-      {  return true;}
-      else if(item.hDistance == this.hDistance)
-      {  return true;}
-      else if(item.hRate == this.hRate)
-      {  return true;}
-      else if(item.rRate == this.rRate)
-      {  return true;}
+    if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0 && this.rRate.length > 0){
+      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate && this.rRate == item.rRate) return true;
+      else return false;
     }
-    else if(item.mall == this.mall)
-      {  return true;}
+    else if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0){
+      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 && this.hDistance.length > 0 && this.rRate.length > 0){
+      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.rRate == item.rRate) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 && this.hRate.length > 0 && this.rRate.length > 0){
+      if(this.mall == item.mall && this.station == item.station && this.hRate == item.hRate && this.rRate == item.rRate) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 && this.hDistance.length > 0 ){
+      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 && this.rRate.length > 0){
+      if(this.mall == item.mall && this.station == item.station && this.rRate == item.rRate) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 && this.hRate.length > 0 ){
+      if(this.mall == item.mall && this.station == item.station && this.hRate == item.hRate) return true;
+      else return false;
+    }
+    else if(this.station.length > 0 ){
+      if(this.mall == item.mall && this.station == item.station) return true;
+      else return false;
+    }
+    else if(this.mall == item.mall) return true;
     else return false;
   }
 
@@ -90,7 +89,9 @@ export class ResultPage {
     this.navCtrl.push(MapPage);
   }
 
-  ionViewDidLoad(){
-  //this.returnList(item);
+  findMap(item){
+    this.navCtrl.push(MapPage, {
+      item: item
+    });
   }
 }

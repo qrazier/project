@@ -3,15 +3,21 @@
   <ion-navbar>
     <ion-title>Add Hotel <ion-icon name="hotel"></ion-icon></ion-title>
   </ion-navbar>
+  
+  <script>
+    function initMap() {
+      var input = document.getElementById('pac-input');
+      var autocomplete = new google.maps.places.Autocomplete(input); 
+    }
+  </script>
 
 </ion-header>
-
 
 <ion-content padding>
 
   <ion-item>
-    <ion-label floating >Hotel Name</ion-label>
-    <ion-input type="text" [(ngModel)]="hotel.name"></ion-input>
+    <ion-label floating>Hotel Name</ion-label>
+    <ion-input id="pac-input" type="text" [(ngModel)]="hotel.name"></ion-input>
   </ion-item>
 
   <ion-item>

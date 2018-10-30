@@ -19,7 +19,9 @@ export class AddHotelPage {
     hDistance: '',
     hRate: '',
     rRate: '',
-    mall: ''
+    mall: '',
+    lat: '',
+    long: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,

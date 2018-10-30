@@ -16,6 +16,8 @@ export class HomePage {
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
 	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events, public MyApp: MyApp) {
+		this.station = "KL Sentral";
+		this.mall = "true";
   }
 
   ionViewWillLoad(){
@@ -37,10 +39,10 @@ export class HomePage {
 			}
 		});
   }
-  public station: string = '';
-  public hDistance: string = '';
-  public hRate: string = '';
-  public rRate: string = '';
+  public station: string = "";
+  public hDistance: string = "";
+  public hRate: string = "";
+  public rRate: string = "";
   public mall: any;
   
   stationOpt(){
@@ -71,21 +73,26 @@ export class HomePage {
   }
   
   result(){
-    
-	let station = this.stationOpt();
-	let hDistance = this.hDistanceOpt();
-	let hRate = this.hRateOpt();
-	let rRate = this.rRateOpt();
-	let mall = this.mallOpt();
-	
-	this.navCtrl.push(ResultPage, {
-		station: station,
-		hDistance: hDistance,
-		hRate: hRate,
-		rRate: rRate,
-		mall: mall
-	});
+		let station = this.stationOpt();
+		let hDistance = this.hDistanceOpt();
+		let hRate = this.hRateOpt();
+		let rRate = this.rRateOpt();
+		let mall = this.mallOpt();
+		
+		this.navCtrl.push(ResultPage, {
+			station: station,
+			hDistance: hDistance,
+			hRate: hRate,
+			rRate: rRate,
+			mall: mall
+		});
   }
+
+	reset(){
+		this.hDistance = "";
+		this.hRate = "";
+		this.rRate = "";
+	}
 
   addHotel(){
 	this.navCtrl.push(AddHotelPage);
