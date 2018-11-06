@@ -54,23 +54,6 @@
     code: https://stackblitz.com/edit/ionic3-star-rating?file=pages%2Fabout%2Fabout.ts
     gudluck!
   -->
-    
-  <ion-item>
-    <ion-label floating>Restaurant Rate</ion-label>
-    <ion-select [(ngModel)]="hotel.rRate">
-      <ion-option value="Low">Below RM 20</ion-option>
-      <ion-option value="Normal">Between RM 21 & RM 59</ion-option>
-      <ion-option value="High">RM 60 and above</ion-option>
-    </ion-select>
-  </ion-item>
-    
-    <ion-item>
-      <ion-label floating>Mall Availability</ion-label>
-      <ion-select [(ngModel)]="hotel.mall">
-        <ion-option value="Yes">Yes</ion-option>
-        <ion-option value="No">No</ion-option>
-      </ion-select>
-    </ion-item>
 
-    <button ion-button block (click)="addHotel(hotel)"> Add Hotel</button>
+  <button ion-button block clear (click)="addHotel(hotel)"> Add Hotel</button>
 </ion-content>

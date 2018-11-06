@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { ResultPage } from '../result/result';
 import { AddHotelPage } from '../add-hotel/add-hotel';
-import { MyApp } from '../../app/app.component';
+import { HotelListPage } from '../hotel-list/hotel-list';
 
 @IonicPage()
 @Component({
@@ -15,7 +15,7 @@ import { MyApp } from '../../app/app.component';
 export class HomePage {
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events, public MyApp: MyApp) {
+	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
 		this.station = "KL Sentral";
 		this.mall = "true";
   }
@@ -93,8 +93,4 @@ export class HomePage {
 		this.hRate = "";
 		this.rRate = "";
 	}
-
-  addHotel(){
-	this.navCtrl.push(AddHotelPage);
-  }
 }

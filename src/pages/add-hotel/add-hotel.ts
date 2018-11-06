@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Hotel } from '../../models/hotel';
 import { HotelListProvider } from './../../providers/hotel-list/hotel-list';
-import { ResultPage } from '../result/result';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -19,9 +19,7 @@ export class AddHotelPage {
     hDistance: '',
     hRate: '',
     rRate: '',
-    mall: '',
-    lat: '',
-    long: ''
+    mall: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -30,11 +28,10 @@ export class AddHotelPage {
   }
 
   addHotel(hotel: Hotel){
-    this.hotelList.addHotelList(hotel)
-    .then(ref => {
-      this.navCtrl.push(ResultPage, {key: ref.key});
+    this.hotelList.addHotelList(hotel).then(ref => {
+      this.navCtrl.pop();
     });
-    this.navCtrl.pop();
+    
   }
 
 }
