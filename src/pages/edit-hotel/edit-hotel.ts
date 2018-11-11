@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Hotel } from 'models/hotel';
 import { HotelListProvider } from '../../providers/hotel-list/hotel-list';
 
@@ -22,11 +22,9 @@ export class EditHotelPage {
     station: '',
     hDistance: '',
     hRate: '',
-    rRate: '',
-    mall: ''
   };
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private hotelList: HotelListProvider) {
+    private alertCtrl: AlertController, private hotelList: HotelListProvider) {
   }
 
   ionViewDidLoad() {
@@ -39,9 +37,28 @@ export class EditHotelPage {
     })
   }
 
-  removeHotel(hotel: Hotel){
-    this.hotelList.removeHotel(hotel).then(() => {
-      this.navCtrl.pop();
-    })
+  removeHotel(hotel: Hotel) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm delete',
+      message: 'Do you want to delete this data?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.hotelList.removeHotel(hotel).then(() => {
+              this.navCtrl.pop();
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

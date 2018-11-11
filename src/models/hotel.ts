@@ -4,6 +4,4 @@ export interface Hotel{
     station: string;
     hDistance: string;
     hRate: string;
-    rRate: string;
-    mall: string;
 } 

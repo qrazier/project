@@ -32,28 +32,14 @@
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Hotel Distance</ion-label>
-    <ion-select [(ngModel)]="hotel.hDistance">
-      <ion-option value="Near">Near (< 50m)</ion-option>
-      <ion-option value="Intermediate">Intermediate (50m - 200m)</ion-option>
-      <ion-option value="Far">Far (> 200m)</ion-option>
-    </ion-select>
+    <ion-label floating>Hotel Rate</ion-label>
+    <ion-input type="number" [(ngModel)]="hotel.hRate"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label floating>Hotel Rate</ion-label>
-    <ion-select [(ngModel)]="hotel.hRate">
-      <ion-option value="Low">Low (< RM100)</ion-option>
-      <ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
-      <ion-option value="High">High (> RM250)</ion-option>
-    </ion-select>
+    <ion-label floating>Hotel Distance</ion-label>
+    <ion-input type="number" [(ngModel)]="hotel.hDistance"></ion-input>
   </ion-item>
-  <!--
-    re: plan to make a star-rate based.
-    npm: https://github.com/melwinVincent/ionic3-star-rating
-    code: https://stackblitz.com/edit/ionic3-star-rating?file=pages%2Fabout%2Fabout.ts
-    gudluck!
-  -->
 
   <button ion-button block clear (click)="addHotel(hotel)"> Add Hotel</button>
 </ion-content>

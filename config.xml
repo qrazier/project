@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-googleplus" spec="^5.3.1">
         <variable name="REVERSED_CLIENT_ID" value="221650581655-c2hpmfmucvdl1j1jl86n3jdoim8uie2s.apps.googleusercontent.com" />
     </plugin>
+    <plugin name="cordova-plugin-nativegeocoder" spec="3.1.2" />
 </widget>

@@ -8,5 +8,13 @@
     "variables": {
       "REVERSED_CLIENT_ID": "221650581655-c2hpmfmucvdl1j1jl86n3jdoim8uie2s.apps.googleusercontent.com"
     }
+  },
+  "cordova-plugin-nativegeocoder": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-nativegeocoder"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
