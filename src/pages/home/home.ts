@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
 
 import { ResultPage } from '../result/result';
-import { AddHotelPage } from '../add-hotel/add-hotel';
-import { HotelListPage } from '../hotel-list/hotel-list';
 
 @IonicPage()
 @Component({
@@ -14,31 +11,11 @@ import { HotelListPage } from '../hotel-list/hotel-list';
 
 export class HomePage {
 
-  constructor(private afAuth: AngularFireAuth, private toast: ToastController,
-	public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
 		this.station = "KL Sentral";
 		this.mall = "true";
   }
 
-  ionViewWillLoad(){
-    this.events.subscribe('searching', (data) => {
-	  console.log(data);
-		});
-		this.afAuth.authState.subscribe(data => {
-			if(data && data.email && data.uid){
-				this.toast.create({
-				message: 'Welcome to MyApp, ${data.email}',
-				duration: 3000
-				}).present();
-			}
-			else{
-			this.toast.create({
-				message: 'Could not find authentication details',
-				duration: 3000
-				}).present();
-			}
-		});
-  }
   public station: string = "";
   public hDistance: string = "";
   public hRate: string = "";

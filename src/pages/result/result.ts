@@ -16,8 +16,8 @@ export class ResultPage {
   station: string;
   hDistance: string;
   hRate: string;
-  rRate: string;
-  mall: string;
+  rType: string;
+  halal: string;
 
   hotelRef$: Observable<Hotel[]>;
 
@@ -44,44 +44,27 @@ export class ResultPage {
       this.station = this.navParams.data.station;
       this.hDistance = this.navParams.data.hDistance;
       this.hRate = this.navParams.data.hRate;
-      this.rRate = this.navParams.data.rRate;
-      this.mall = this.navParams.data.mall;
+      this.rType = this.navParams.data.rType;
+      this.halal = this.navParams.data.halal;
   }
     
   returnList(item){
-    if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0 && this.rRate.length > 0){
-      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate && this.rRate == item.rRate) return true;
+    if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0){
+      if(this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0){
-      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate) return true;
+    else if(this.station.length > 0 && this.hDistance.length > 0){
+      if(this.station == item.station && this.hDistance == item.hDistance) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hDistance.length > 0 && this.rRate.length > 0){
-      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance && this.rRate == item.rRate) return true;
+    else if(this.station.length > 0 && this.hRate.length > 0){
+      if(this.station == item.station && this.hRate == item.hRate) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hRate.length > 0 && this.rRate.length > 0){
-      if(this.mall == item.mall && this.station == item.station && this.hRate == item.hRate && this.rRate == item.rRate) return true;
+    else if(this.station.length > 0){
+      if(this.station == item.station) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hDistance.length > 0 ){
-      if(this.mall == item.mall && this.station == item.station && this.hDistance == item.hDistance) return true;
-      else return false;
-    }
-    else if(this.station.length > 0 && this.rRate.length > 0){
-      if(this.mall == item.mall && this.station == item.station && this.rRate == item.rRate) return true;
-      else return false;
-    }
-    else if(this.station.length > 0 && this.hRate.length > 0 ){
-      if(this.mall == item.mall && this.station == item.station && this.hRate == item.hRate) return true;
-      else return false;
-    }
-    else if(this.station.length > 0 ){
-      if(this.mall == item.mall && this.station == item.station) return true;
-      else return false;
-    }
-    else if(this.mall == item.mall) return true;
     else return false;
   }
 
