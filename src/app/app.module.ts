@@ -13,8 +13,6 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 
 import { MyApp } from './app.component';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
 import { ResultPage } from '../pages/result/result';
 import { MapPage } from '../pages/map/map';
 //import { AddHotelPage } from '../pages/add-hotel/add-hotel';
@@ -29,8 +27,6 @@ import { GeocoderProvider } from '../providers/geocoder/geocoder';
 @NgModule({
   declarations: [
     MyApp,
-    ItemDetailsPage,
-    ListPage,
     ResultPage,
     MapPage,
     //AddHotelPage,
@@ -48,8 +44,6 @@ import { GeocoderProvider } from '../providers/geocoder/geocoder';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ItemDetailsPage,
-    ListPage,
     ResultPage,
     MapPage,
     //AddHotelPage,

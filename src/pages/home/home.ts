@@ -12,29 +12,30 @@ import { ResultPage } from '../result/result';
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
-		this.station = "KL Sentral";
-		this.mall = "true";
+	this.station = "KL Sentral";
+	//this.mall = "true";
   }
 
   public station: string = "";
-  public hDistance: string = "";
-  public hRate: string = "";
-  public rRate: string = "";
-  public mall: any;
+  public distance: string = "";
+  public rate: string = "";
+  //public rRate: string = "";
+  //public mall: any;
   
   stationOpt(){
 		let stationOp = this.station;
 		return stationOp;	
   }
-  hDistanceOpt(){
-		let hDistanceOp = this.hDistance;
-		return hDistanceOp;
+  distanceOpt(){
+		let distanceOp = this.distance;
+		return distanceOp;
   }
-  hRateOpt(){
-		let hRateOp = this.hRate;
-		return hRateOp;
+  rateOpt(){
+		let rateOp = this.rate;
+		return rateOp;
   }
-  rRateOpt(){
+  
+  /*rRateOpt(){
 		let rRateOp = this.rRate;
 		return rRateOp;
 	}
@@ -47,27 +48,27 @@ export class HomePage {
 			 mallOp = 'No';
 		}
 		return mallOp;
-  }
+  }*/
   
   result(){
 		let station = this.stationOpt();
-		let hDistance = this.hDistanceOpt();
-		let hRate = this.hRateOpt();
-		let rRate = this.rRateOpt();
-		let mall = this.mallOpt();
+		let distance = this.distanceOpt();
+		let rate = this.rateOpt();
+		//let rRate = this.rRateOpt();
+		//let mall = this.mallOpt();
 		
 		this.navCtrl.push(ResultPage, {
 			station: station,
-			hDistance: hDistance,
-			hRate: hRate,
-			rRate: rRate,
-			mall: mall
+			hDistance: distance,
+			hRate: rate,
+			//rRate: rRate,
+			//mall: mall
 		});
   }
 
 	reset(){
-		this.hDistance = "";
-		this.hRate = "";
-		this.rRate = "";
+		this.distance = "";
+		this.rate = "";
+		//this.rRate = "";
 	}
 }

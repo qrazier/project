@@ -1,11 +1,24 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Map</ion-title>
-    </ion-navbar>
-  </ion-header>
-  
+  <ion-navbar>
+    <ion-title>Map</ion-title>
+  </ion-navbar>
+</ion-header>
+    
+<ion-content padding>
+  <ion-card [hidden]="showHide">
+      <ion-card-content>
+          <div #directionsPanel></div>
+      </ion-card-content>
+  </ion-card>
+  <div #map id="map"></div>
+
+  <ion-row>
+    <ion-col style="text-align: center">
+      <button ion-button clear style="color: tomato" (click)="restaurant()">	&nbsp;Restaurant &nbsp;<ion-icon name="restaurant"></ion-icon></button>		
+    </ion-col>
+    <ion-col style="text-align: center">
+      <button ion-button clear style="color: seagreen" (click)="direction()">	&nbsp;Direction	&nbsp;<ion-icon name="return-right"></ion-icon></button>		
+    </ion-col>
+  </ion-row>
       
-  <ion-content padding>
-      <div #map id="map"></div>
-      <ion-item ></ion-item>
-  </ion-content>
+</ion-content>

@@ -1,5 +1,5 @@
 page-map {
-    #floating-panel {
+  #floating-panel {
     position: absolute;
     top: 10px;
     right: 5px;
@@ -12,7 +12,34 @@ page-map {
     line-height: 30px;
     padding-left: 10px;
   }
+
+  .card-md {
+    margin: 0px;
+    border-radius: 0px;
+    width: calc(100% - 30px);
+  }
+
+  .scroll {
+    height: 100%
+  }
+
   #map {
     height: 90%;
+  }
+
+  ion-card {
+    max-height: 200px;
+    overflow: scroll;
+    position: absolute;
+    z-index: 1;
+  }
+
+  ion-card-content {
+    padding: 0;
+  }
+  
+  .adp-warnbox {
+    margin: 5px 0 3px 0;
+    display: none;
   }
 }
