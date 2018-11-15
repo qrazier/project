@@ -59,8 +59,8 @@ export class HomePage {
 		
 		this.navCtrl.push(ResultPage, {
 			station: station,
-			hDistance: distance,
-			hRate: rate,
+			distance: distance,
+			rate: rate,
 			//rRate: rRate,
 			//mall: mall
 		});

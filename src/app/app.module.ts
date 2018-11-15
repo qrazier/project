@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,8 +20,6 @@ import { MapPage } from '../pages/map/map';
 
 import { User } from '../providers/user/user';
 import { HotelListProvider } from '../providers/hotel-list/hotel-list';
-import { GeocoderProvider } from '../providers/geocoder/geocoder';
-
 
 @NgModule({
   declarations: [
@@ -53,11 +50,9 @@ import { GeocoderProvider } from '../providers/geocoder/geocoder';
   providers: [
     StatusBar,
     SplashScreen,
-    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     User,
     HotelListProvider,
-    GeocoderProvider
   ]
 })
 export class AppModule {}

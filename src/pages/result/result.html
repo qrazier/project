@@ -8,10 +8,8 @@
     
 <ion-content padding>
   <p>Station: {{station}}</p>
-  <p>Hotel Distance: {{hDistance}}</p>
-  <p>Hotel Rate: {{hRate}}</p>
-  <p>Restaurant Rate: {{rRate}}</p>
-  <p>Mall: {{mall}}</p>
+  <p>Hotel Distance: {{distance}}</p>
+  <p>Hotel Rate: {{rate}}</p>
   <div *ngIf="hotelRef$ | async; let hotelRef">
 
     <ion-list *ngFor="let item of hotelRef" >
@@ -22,8 +20,6 @@
           <h3>Hotel Station: {{item.station}}</h3>
           <p>Hotel Distance: {{item.hDistance}}</p>
           <p>Hotel Rate: {{item.hRate}}</p>
-          <p>RestaurantRate: {{item.rRate}}</p>
-          <p>Mall: {{item.mall}}</p>
         </div>
         <ion-item-divider></ion-item-divider>
       </button>

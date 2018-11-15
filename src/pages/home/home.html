@@ -24,7 +24,7 @@
 
 	  <ion-item>
 			<ion-label class="black">HOTEL DISTANCE</ion-label>
-			<ion-select (ionChange)="distanceOpt();" [(ngModel)]="hDistance">
+			<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
 				<ion-option value="Near">Near (&lt; 100m)</ion-option>
 				<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
 				<ion-option value="Far">Far (&gt; 500m)</ion-option>
@@ -33,9 +33,9 @@
 
 	  <ion-item>
 			<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>
-			<ion-select (ionChange)="rateOpt();" [(ngModel)]="hRate">
-				<ion-option value="Low">Low (&lt;  RM75)</ion-option>
-				<ion-option value="Normal">Normal (RM 76 - RM 250)</ion-option>
+			<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
+				<ion-option value="Low">Low (&lt;  RM100)</ion-option>
+				<ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
 				<ion-option value="High">High (&gt; RM250)</ion-option>
 			</ion-select>
 	  </ion-item>

@@ -14,10 +14,11 @@ import { Observable } from 'rxjs/Observable';
 export class ResultPage {
 
   station: string;
-  hDistance: string;
-  hRate: string;
-  rType: string;
-  halal: string;
+  distance: string;
+  rate: string;
+
+  d: string;
+  r: string;
 
   hotelRef$: Observable<Hotel[]>;
 
@@ -42,23 +43,36 @@ export class ResultPage {
 
       //get data from user
       this.station = this.navParams.data.station;
-      this.hDistance = this.navParams.data.hDistance;
-      this.hRate = this.navParams.data.hRate;
-      this.rType = this.navParams.data.rType;
-      this.halal = this.navParams.data.halal;
+      this.distance = this.navParams.data.distance;
+      this.rate = this.navParams.data.rate;
   }
     
   returnList(item){
-    if(this.station.length > 0 && this.hDistance.length > 0 && this.hRate.length > 0){
-      if(this.station == item.station && this.hDistance == item.hDistance && this.hRate == item.hRate) return true;
+
+    if(this.distance.length > 0){
+      if(item.hDistance < 100) this.d = "Near";
+      else if(100 <= item.hDistance && item.hDistance <= 500) this.d = "Intermediate";
+      else if(item.hDistance > 500) this.d = "Far";
+      else this.d = "";
+    }
+
+    if(this.rate.length > 0){
+      if(item.hRate < 100) this.r = "Low";
+      else if(100 <= item.hRate && item.hRate <= 250) this.r = "Normal";
+      else if(item.hRate > 250) this.r = "High";
+      else this.r = "";
+    }
+
+    if(this.station.length > 0 && this.distance.length > 0 && this.rate.length > 0){
+      if(this.station == item.station && this.distance == this.d && this.rate == this.r) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hDistance.length > 0){
-      if(this.station == item.station && this.hDistance == item.hDistance) return true;
+    else if(this.station.length > 0 && this.distance.length > 0){
+      if(this.station == item.station && this.distance == this.d) return true;
       else return false;
     }
-    else if(this.station.length > 0 && this.hRate.length > 0){
-      if(this.station == item.station && this.hRate == item.hRate) return true;
+    else if(this.station.length > 0 && this.rate.length > 0){
+      if(this.station == item.station && this.rate == this.r) return true;
       else return false;
     }
     else if(this.station.length > 0){

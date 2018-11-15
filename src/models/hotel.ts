@@ -2,6 +2,6 @@ export interface Hotel{
     key?: string;
     name: string;
     station: string;
-    hDistance: string;
-    hRate: string;
+    distance: string;
+    rate: string;
 } 
