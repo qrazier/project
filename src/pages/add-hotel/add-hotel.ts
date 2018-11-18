@@ -16,8 +16,8 @@ export class AddHotelPage {
   hotel: Hotel = {
     name: '',
     station: '',
-    hDistance: '',
-    hRate: ''
+    distance: '',
+    rate: '',
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,

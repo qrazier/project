@@ -24,7 +24,7 @@ export class MapPage {
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
     this.hotel = this.navParams.data.item;
     this.start = "Monorail " + this.hotel.station;
-    this.end = "Meliá Kuala Lumpur, 16, Jalan Imbi, Bukit Bintang, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur";
+    this.end = this.hotel.name + ', ' + this.hotel.station;
   }
 
   ionViewDidLoad(){
