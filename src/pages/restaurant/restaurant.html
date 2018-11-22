@@ -12,10 +12,128 @@
       <button ion-button (click)="closeModal()">Close</button>
     </ion-buttons>
   </ion-navbar>
-
+  <style>.black{color: black;}</style>
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-item>
+    <ion-label class="black">RESTAURANT TYPE</ion-label>
+    <ion-select (ionChange)="typeOpt();" [(ngModel)]="type">
+      <ion-option value="Any" >Any</ion-option>
+      <ion-option value="FastFood">Fast Food</ion-option>
+      <ion-option value="Cafe">Cafe</ion-option>
+      <ion-option value="FamilyStyle">Family Style</ion-option>
+      <ion-option value="Japanese">Japanese</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>HALAL</ion-label>
+    <ion-toggle (ionChange)="halalOpt();" [(ngModel)]="halal"></ion-toggle>
+  </ion-item>
+  
+  <div id="nope">
+    <!--If type is 'Any'-->
+    <div *ngIf="type=='Any'">
+      <ion-list>
+        <h2>Cafe List</h2>
+
+        <ion-item *ngFor="let item of cafeRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+      <ion-list>
+        <h2>Fast Food List</h2>
+
+        <ion-item *ngFor="let item of fastFoodRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+      <ion-list>
+        <h2>Family Style List</h2>
+
+        <ion-item *ngFor="let item of familyStyleRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+      <ion-list>
+        <h2>Japanese List</h2>
+        
+        <ion-item *ngFor="let item of japaneseRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+    <!--If type is 'Cafe'-->
+    <div *ngIf="type=='Cafe'" >
+      <ion-list>
+        <h2>Cafe List</h2>
+
+        <ion-item *ngFor="let item of cafeRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+      <!--If type is 'FastFood'-->
+    <div *ngIf="type=='FastFood'" >
+      <ion-list>
+        <h2>Fast Food List</h2>
+
+        <ion-item *ngFor="let item of fastFoodRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+      <!--If type is 'FamilyStyle'-->
+    <div *ngIf="type=='FamilyStyle'" >
+      <ion-list>
+        <h2>Family Style List</h2>
+
+        <ion-item *ngFor="let item of familyStyleRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+    </div>
+
+      <!--If type is 'Japanese'-->
+    <div *ngIf="type=='Japanese'" >
+      <ion-list>
+        <h2>Japanese List</h2>
+        
+        <ion-item *ngFor="let item of japaneseRef$ | async">
+          <p>Restaurant Name: {{item.name}}</p>
+          <p>Restaurant Lat & Long: {{item.latLng}}</p>
+          <p>Halal: {{item.halal}}</p>
+        </ion-item>
+
+      </ion-list>
+    </div>
+  </div>
 
 </ion-content>

@@ -48,6 +48,7 @@ export class MapPage {
     this.directionsDisplay.setMap(this.map);
     this.directionsDisplay.setPanel(this.directionsPanel.nativeElement);
     this.calculateAndDisplayRoute();
+    
   }
   
   calculateAndDisplayRoute() {

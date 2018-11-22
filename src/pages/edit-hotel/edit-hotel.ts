@@ -20,8 +20,8 @@ export class EditHotelPage {
   hotel: Hotel = {
     name: '',
     station: '',
-    hDistance: '',
-    hRate: '',
+    distance: '',
+    rate: '',
   };
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private alertCtrl: AlertController, private hotelList: HotelListProvider) {

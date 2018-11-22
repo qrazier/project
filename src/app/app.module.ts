@@ -14,21 +14,16 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { MyApp } from './app.component';
 import { ResultPage } from '../pages/result/result';
 import { MapPage } from '../pages/map/map';
-//import { AddHotelPage } from '../pages/add-hotel/add-hotel';
-//import { EditHotelPage } from '../pages/edit-hotel/edit-hotel';
-//import { HotelListPage } from '../pages/hotel-list/hotel-list';
 
 import { User } from '../providers/user/user';
 import { HotelListProvider } from '../providers/hotel-list/hotel-list';
+import { RestaurantProvider } from '../providers/restaurant/restaurant';
 
 @NgModule({
   declarations: [
     MyApp,
     ResultPage,
     MapPage,
-    //AddHotelPage,
-    //EditHotelPage,
-    //HotelListPage
   ],
   imports: [
     BrowserModule,
@@ -43,9 +38,6 @@ import { HotelListProvider } from '../providers/hotel-list/hotel-list';
     MyApp,
     ResultPage,
     MapPage,
-    //AddHotelPage,
-    //EditHotelPage,
-    //HotelListPage
   ],
   providers: [
     StatusBar,
@@ -53,6 +45,7 @@ import { HotelListProvider } from '../providers/hotel-list/hotel-list';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     User,
     HotelListProvider,
+    RestaurantProvider,
   ]
 })
 export class AppModule {}
