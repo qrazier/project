@@ -1,6 +1,8 @@
 export interface Restaurant{
     key?: string;
     name: string;
-    latLng: any;
+    lat: any;
+    lng: any;
     halal: string;
+    station: string;
 } 

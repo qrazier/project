@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
 
 import { MapPage } from '../map/map';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant'
 import { Observable } from 'rxjs/Observable';
-import { concat } from 'rxjs/operators';
 import { Restaurant } from 'models/restaurant';
 
 @IonicPage()
@@ -19,11 +18,16 @@ export class RestaurantPage {
   familyStyleRef$: Observable<Restaurant[]>;
   japaneseRef$: Observable<Restaurant[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController,
+  h: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController, public appCtrl: App,
     private restaurantList: RestaurantProvider) {
       
+      this.hotel = navParams.get('hotel');
       this.halal = true;
       this.type = "Any";
+
+      //console.log("hello ", this.hotel.station);
       
       this.cafeRef$ = this.restaurantList.getCafeList().snapshotChanges()
         .map(
@@ -64,6 +68,7 @@ export class RestaurantPage {
 
   public type: string = "";
   public halal = true;
+  public hotel: any;
 
   typeOpt(){
     let typeOp = this.type;
@@ -74,20 +79,29 @@ export class RestaurantPage {
     return halalOp;
   }
 
-  result(){
-		let type = this.typeOpt();
-		let halal = this.halalOpt();
-				
-		this.navCtrl.push(MapPage, {
-			type: type,
-			halal: halal,
-		});
+  returnStation(item){
+    //console.log(item.station);
+    if(this.hotel.station == item.station) return true;
+    else return false;
+  }
+  returnHalal(item){
+    if(this.halal) this.h = "Yes";
+    else this.h = "No";
+
+    if(this.h == item.halal) return true;
+    else return false;
+  }
+
+  findMap(item){
+    this.viewCtrl.dismiss();
+    this.appCtrl.getRootNav().push(MapPage, {
+      hotel: this.hotel,
+      restaurant: item,
+      rest: true
+    });
   }
 
   public closeModal(){
     this.viewCtrl.dismiss();
   }
-
-  
-
 }
