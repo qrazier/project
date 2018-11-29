@@ -22,6 +22,7 @@ export class EditHotelPage {
     station: '',
     distance: '',
     rate: '',
+    image: '',
   };
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private alertCtrl: AlertController, private hotelList: HotelListProvider) {

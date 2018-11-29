@@ -14,15 +14,19 @@
 
     <ion-list *ngFor="let item of hotelRef" >
       <!-- Repeat the ion-item for as many items that we have inside of the hotel list. -->
-      <button ion-item *ngIf="returnList(item)" (click)="findMap(item)">
-        <div >
-          <h2>Hotel Name: {{item.name}}</h2>
-          <h3>Hotel Station: {{item.station}}</h3>
-          <p>Hotel Distance: {{item.hDistance}}</p>
-          <p>Hotel Rate: {{item.hRate}}</p>
+      <div ion-item *ngIf="returnList(item)">
+        <div class="image-txt-container">
+          <img width=20% height=20% src="{{item.image}}">
+          <div class="clear">
+            <h2>Hotel Name: {{item.name}}</h2>
+            <h3>Hotel Station: {{item.station}}</h3>
+            <p>Hotel Distance: {{item.hDistance}}</p>
+            <p>Hotel Rate: {{item.hRate}}</p>
+            <button class="button-md" (click)="findMap(item)">Find direction!</button>
+          </div>
         </div>
         <ion-item-divider></ion-item-divider>
-      </button>
+      </div>
     </ion-list>
   </div>
 </ion-content>

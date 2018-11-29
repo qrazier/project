@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { Hotel } from '../../models/hotel';
 import { HotelListProvider } from './../../providers/hotel-list/hotel-list';
-import { HomePage } from '../home/home';
+//import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -16,8 +16,9 @@ export class AddHotelPage {
   hotel: Hotel = {
     name: '',
     station: '',
-    distance: '',
-    rate: '',
+    hDistance: '',
+    hRate: '',
+    image: '',
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,

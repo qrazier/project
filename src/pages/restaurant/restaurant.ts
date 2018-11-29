@@ -80,7 +80,9 @@ export class RestaurantPage {
   }
 
   returnStation(item){
-    //console.log(item.station);
+    console.log(item.station);
+    console.log(this.hotel.station);
+    
     if(this.hotel.station == item.station) return true;
     else return false;
   }

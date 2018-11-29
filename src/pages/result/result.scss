@@ -1,2 +1,19 @@
 page-result {
+    .image-txt-container {
+        display:flex;
+        align-items:center;
+        flex-direction: row;
+    }
+    .clear{
+        display: block;
+        align-items: center;
+        margin-left: 20px;
+    }
+    ion-img {
+        object-fit: resize;
+        width: auto !important;
+        border: 0;
+        padding: 0;
+        background-color: grey;
+    }
 }
