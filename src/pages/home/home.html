@@ -1,17 +1,21 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Hello Tourist</ion-title>
-  </ion-navbar>
-  <style>.black{color: black;}</style>
+	<ion-navbar>
+		<ion-title>Hello Tourist</ion-title>
+	</ion-navbar>
+	<style>
+		.black {
+			color: black;
+		}
+	</style>
 
 </ion-header>
 
 <ion-content padding>
 
 	<ion-list>
-	
-	  <ion-item>
+
+		<ion-item>
 			<ion-label class="black">MONORAIL STATIONS</ion-label>
 			<ion-select (ionChange)="stationOpt();" [(ngModel)]="station">
 				<ion-option value="KL Sentral">KL Sentral</ion-option>
@@ -20,39 +24,85 @@
 				<ion-option value="Medan Tuanku">Medan Tuanku</ion-option>
 				<ion-option value="Chow Kit">Chow Kit</ion-option>
 			</ion-select>
-	  </ion-item>
+		</ion-item>
 
-	  <ion-item>
-			<ion-label class="black">HOTEL DISTANCE</ion-label>
-			<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
-				<ion-option value="Near">Near (&lt; 100m)</ion-option>
-				<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
-				<ion-option value="Far">Far (&gt; 500m)</ion-option>
+		<ion-item>
+			<ion-label class="black">Searching for...</ion-label>
+			<ion-select (ionChange)="choiceOpt();" [(ngModel)]="choice">
+				<ion-option value="Hotel">Hotel</ion-option>
+				<ion-option value="Restaurant">Restaurant</ion-option>
+				<ion-option value="Mall">Mall</ion-option>
+				<ion-option value="Tourist Attraction">Tourist Attraction</ion-option>
 			</ion-select>
-	  </ion-item>
+		</ion-item>
 
-	  <ion-item>
-			<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>
-			<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
-				<ion-option value="Low">Low (&lt;  RM100)</ion-option>
-				<ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
-				<ion-option value="High">High (&gt; RM250)</ion-option>
-			</ion-select>
-	  </ion-item>
-		
-		<ion-row>
-			<ion-col style="text-align: center;">
-					<button ion-button (click)="result()">Search</button>		
-			</ion-col>
-			<ion-col style="text-align: center;">
-				<button ion-button (click)="reset()">Reset</button>		
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col style="text-align: center;">
-					<button ion-button navPush="HotelListPage"> Hotel list </button>			
-			</ion-col>
-		</ion-row>
-  	</ion-list>		
-		
+		<div *ngIf="choice=='Hotel'">
+			<ion-item>
+				<ion-label class="black">HOTEL DISTANCE</ion-label>
+				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+					<ion-option value="Near">Near (&lt; 100m)</ion-option>
+					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
+					<ion-option value="Far">Far (&gt; 500m)</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>
+				<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
+					<ion-option value="Low">Low (&lt; RM100)</ion-option>
+					<ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
+					<ion-option value="High">High (&gt; RM250)</ion-option>
+				</ion-select>
+			</ion-item>
+		</div>
+
+		<div *ngIf="choice=='Restaurant'">
+			<ion-item>
+				<ion-label class="black">RESTAURANT DISTANCE</ion-label>
+				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+					<ion-option value="Near">Near (&lt; 100m)</ion-option>
+					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
+					<ion-option value="Far">Far (&gt; 500m)</ion-option>
+				</ion-select>
+			</ion-item>
+		</div>
+
+		<div *ngIf="choice=='Mall'">
+			<ion-item>
+				<ion-label class="black">MALL DISTANCE</ion-label>
+				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+					<ion-option value="Near">Near (&lt; 100m)</ion-option>
+					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
+					<ion-option value="Far">Far (&gt; 500m)</ion-option>
+				</ion-select>
+			</ion-item>
+		</div>
+
+		<div *ngIf="choice=='Tourist Attraction'">
+			<ion-item>
+				<ion-label class="black">TOURIST ATTRACTION</ion-label>
+				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+					<ion-option value="Near">Near (&lt; 100m)</ion-option>
+					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
+					<ion-option value="Far">Far (&gt; 500m)</ion-option>
+				</ion-select>
+			</ion-item>
+		</div>
+
+		<div *ngIf="choice!='No'">
+			<ion-row>
+				<ion-col style="text-align: center;">
+					<button ion-button (click)="result()">Search</button>
+				</ion-col>
+				<ion-col style="text-align: center;">
+					<button ion-button (click)="reset()">Reset</button>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col style="text-align: center;">
+					<button ion-button navPush="HotelListPage"> Hotel list </button>
+				</ion-col>
+			</ion-row>
+		</div>
+	</ion-list>
+
 </ion-content>

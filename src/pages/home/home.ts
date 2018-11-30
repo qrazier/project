@@ -5,47 +5,60 @@ import { ResultPage } from '../result/result';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+	selector: 'page-home',
+	templateUrl: 'home.html',
 })
 
 export class HomePage {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
+		this.station = "KL Sentral";
+	}
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
-	this.station = "KL Sentral";
-  }
+	public station: string = "";
+	public distance: string = "";
+	public rate: string = "";
+	choice: string = "No";
 
-  public station: string = "";
-  public distance: string = "";
-  public rate: string = "";
-  
-  stationOpt(){
+	stationOpt() {
 		let stationOp = this.station;
-		return stationOp;	
-  }
-  distanceOpt(){
+		return stationOp;
+	}
+	choiceOpt() {
+		let choiceOp = this.choice;
+		return choiceOp;
+	}
+	distanceOpt() {
 		let distanceOp = this.distance;
 		return distanceOp;
-  }
-  rateOpt(){
+	}
+	rateOpt() {
 		let rateOp = this.rate;
 		return rateOp;
-  }
-  
-  result(){
+	}
+
+	result() {
+		let choice = this.choiceOpt();
 		let station = this.stationOpt();
+
+		if (choice == "Hotel") { }
+		else if (choice == "Restaurant") { }
+		else if (choice == "Mall") { }
+		else { }
+				
 		let distance = this.distanceOpt();
 		let rate = this.rateOpt();
-		
+
 		this.navCtrl.push(ResultPage, {
 			station: station,
 			distance: distance,
 			rate: rate,
 		});
-  }
+	}
 
-	reset(){
+	reset() {
+		this.station = "KL Sentral";
 		this.distance = "";
 		this.rate = "";
+		this.choice = "No";
 	}
 }
