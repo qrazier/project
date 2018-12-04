@@ -3,13 +3,13 @@ import { ModalController, NavController, NavParams, Platform } from 'ionic-angul
 
 declare var google;
 let map: any;
-let infowindow: any;
-let options = {
+//let infowindow: any;
+/*let options = {
   enableHighAccuracy: true,
   timeout: 5000,
   maximumAge: 0
 };
-
+*/
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
@@ -18,7 +18,7 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('directionsPanel') directionsPanel: ElementRef;
-  
+
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
@@ -27,30 +27,21 @@ export class MapPage {
   end: any;
 
   restModal: any;
-  
+
   rest: boolean;
   showHide: boolean = true;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
-    this.rest = this.navParams.data.rest;
-    if(typeof this.rest !== "undefined"){
-      this.hotel = this.navParams.data.hotel;
-      this.restModal = this.navParams.data.restaurant;
-      this.start = this.hotel.name + ', ' + this.hotel.station;
-      this.end = this.restModal.lat + ', ' + this.restModal.lng;
-    }else{
-      this.hotel = this.navParams.data.item;
-      this.start = "Monorail " + this.hotel.station;
-      this.end = this.hotel.name + ', ' + this.hotel.station;
-    }
+    this.hotel = this.navParams.data.item;
+    this.start = "Monorail " + this.hotel.station;
+    this.end = this.hotel.name + ', ' + this.hotel.station;
+
   }
 
   ionViewDidLoad() {
     console.log("Hello");
     this.initMap();
     this.mapFunc();
-    //console.log(this.start);
-    //console.log(this.end);
   }
 
   initMap() {
@@ -61,10 +52,10 @@ export class MapPage {
       clickableIcons: false,
     });
 
-    infowindow = new google.maps.InfoWindow();
+    /*infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
-      location: {lat: 3.13288, lng: 101.6856413},
+      location: { lat: 3.13288, lng: 101.6856413 },
       radius: 1000,
       type: ['food']
     }, (results, status) => {
@@ -73,7 +64,7 @@ export class MapPage {
           this.createMarkerII(results[i]);
         }
       }
-    });
+    });*/
   }
 
   mapFunc() {
@@ -84,13 +75,13 @@ export class MapPage {
   }
 
   calculateAndDisplayRoute() {
-    let a = new google.maps.LatLng(3.1348295, 101.68669799999998);
+    //let a = new google.maps.LatLng(3.1348295, 101.68669799999998);
     //let b = new google.maps.LatLng(3.136, 101.68670);
 
-    if(this.rest){
+    /*if (this.rest) {
       this.createMarker(a, this.start);
     }
-
+    */
     this.requestDirection(this.start, this.end);
   }
 
@@ -109,10 +100,10 @@ export class MapPage {
     });
   }
 
-  public restaurant() {
-    let profileModal = this.modalCtrl.create('RestaurantPage', {hotel: this.hotel});
+  /*public restaurant() {
+    let profileModal = this.modalCtrl.create('RestaurantPage', { hotel: this.hotel });
     profileModal.present();
-  }
+  }*/
 
   direction() {
     if (this.showHide === true) {
@@ -123,7 +114,7 @@ export class MapPage {
     }
   }
 
-  createMarker(latlng, title) {
+  /*createMarker(latlng, title) {
 
     var infoWindow = new google.maps.InfoWindow({ map: map });
 
@@ -145,10 +136,10 @@ export class MapPage {
       map: map,
       position: placeLoc
     });
-  
-    google.maps.event.addListener(marker, 'click', function() {
+
+    google.maps.event.addListener(marker, 'click', function () {
       infowindow.setContent(place.name);
       infowindow.open(map, this);
     });
-  }
+  }*/
 }

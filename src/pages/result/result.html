@@ -1,32 +1,152 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Result</ion-title>
-  
+
   </ion-navbar>
 </ion-header>
 
-    
+
 <ion-content padding>
   <p>Station: {{station}}</p>
+  <p>Choice: {{choice}}</p>
   <p>Hotel Distance: {{distance}}</p>
   <p>Hotel Rate: {{rate}}</p>
-  <div *ngIf="hotelRef$ | async; let hotelRef">
+  <p>Restaurant Type: {{type}}</p>
+  <p>Restaurant Halal: {{halal}}</p>
 
-    <ion-list *ngFor="let item of hotelRef" >
-      <!-- Repeat the ion-item for as many items that we have inside of the hotel list. -->
-      <div ion-item *ngIf="returnList(item)">
-        <div class="image-txt-container">
-          <img width=20% height=20% src="{{item.image}}">
-          <div class="clear">
-            <h2>Hotel Name: {{item.name}}</h2>
-            <h3>Hotel Station: {{item.station}}</h3>
-            <p>Hotel Distance: {{item.hDistance}}</p>
-            <p>Hotel Rate: {{item.hRate}}</p>
-            <button class="button-md" (click)="findMap(item)">Find direction!</button>
+  <div *ngIf="choice == 'Hotel'">
+    <div *ngIf="hotelRef$ | async; let hotelRef">
+
+      <ion-list *ngFor="let item of hotelRef">
+        <!-- Repeat the ion-item for as many items that we have inside of the hotel list. -->
+        <div ion-item *ngIf="returnList(item)">
+          <div style="text-align:center;">
+            <img width=20% height=20% src="{{item.image}}">
+            <div class="clear">
+              <h2>Hotel Name: {{item.name}}</h2>
+              <h3>Hotel Station: {{item.station}}</h3>
+              <p>Hotel Distance: {{item.hDistance}}</p>
+              <p>Hotel Rate: {{item.hRate}}</p>
+              <button class="button-md" (click)="findMap(item)">Find direction!</button>
+            </div>
           </div>
+          <ion-item-divider></ion-item-divider>
         </div>
-        <ion-item-divider></ion-item-divider>
-      </div>
-    </ion-list>
+      </ion-list>
+    </div>
+  </div>
+
+  <div *ngIf="choice == 'Restaurant'">
+    <!--If type is 'Any'-->
+    <div *ngIf="type=='Any'">
+
+      <h2>Cafe List</h2>
+      <ion-list *ngFor="let item of cafeRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+
+      <h2>Fast Food List</h2>
+      <ion-list *ngFor="let item of fastFoodRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+
+      <h2>Family Style List</h2>
+      <ion-list *ngFor="let item of familyStyleRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+
+      <h2>Japanese List</h2>
+      <ion-list *ngFor="let item of japaneseRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+    </div>
+
+    <!--If type is 'Cafe'-->
+    <div *ngIf="type=='Cafe'">
+      <h2>Cafe List</h2>
+      <ion-list *ngFor="let item of cafeRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+    </div>
+
+    <!--If type is 'FastFood'-->
+    <div *ngIf="type=='FastFood'">
+      <h2>Fast Food List</h2>
+      <ion-list *ngFor="let item of fastFoodRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+    </div>
+
+    <!--If type is 'FamilyStyle'-->
+    <div *ngIf="type=='FamilyStyle'">
+      <h2>Family Style List</h2>
+      <ion-list *ngFor="let item of familyStyleRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+    </div>
+
+    <!--If type is 'Japanese'-->
+    <div *ngIf="type=='Japanese'">
+      <h2>Japanese List</h2>
+      <ion-list *ngFor="let item of japaneseRef$ | async">
+        <div *ngIf="returnRestaurant(item)">
+          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
+            <p>Restaurant Name: {{item.name}}</p>
+            <p>Restaurant Lat: {{item.lat}}</p>
+            <p>Restaurant Long: {{item.lng}}</p>
+            <p>Halal: {{item.halal}}</p>
+          </button>
+        </div>
+      </ion-list>
+    </div>
   </div>
 </ion-content>

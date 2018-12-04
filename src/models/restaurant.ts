@@ -6,4 +6,5 @@ export interface Restaurant{
     halal: string;
     station: string;
     image: any;
+    distance: any;
 } 

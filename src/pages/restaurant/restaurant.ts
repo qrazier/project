@@ -94,14 +94,14 @@ export class RestaurantPage {
     else return false;
   }
 
-  findMap(item){
+  /*findMap(item){
     this.viewCtrl.dismiss();
     this.appCtrl.getRootNav().push(MapPage, {
       hotel: this.hotel,
       restaurant: item,
       rest: true
     });
-  }
+  }*/
 
   public closeModal(){
     this.viewCtrl.dismiss();
