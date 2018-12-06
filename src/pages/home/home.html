@@ -2,6 +2,11 @@
 
 	<ion-navbar>
 		<ion-title>Hello Tourist</ion-title>
+		<ion-buttons end>
+			<button (click)="logoutClicked()" ion-button>Logout&nbsp;
+				<ion-icon name="close"></ion-icon>
+			</button>
+		</ion-buttons>
 	</ion-navbar>
 	<style>
 		.black {
@@ -32,7 +37,7 @@
 				<ion-option value="Hotel">Hotel</ion-option>
 				<ion-option value="Restaurant">Restaurant</ion-option>
 				<ion-option value="Mall">Mall</ion-option>
-				<ion-option value="Tourist Attraction">Tourist Attraction</ion-option>
+				<ion-option value="Attraction">Tourist Attraction</ion-option>
 			</ion-select>
 		</ion-item>
 
@@ -91,7 +96,7 @@
 			</ion-item>
 		</div>
 
-		<div *ngIf="choice=='Tourist Attraction'" class="line">
+		<div *ngIf="choice=='Attraction'" class="line">
 			<ion-item>
 				<ion-label class="black">TOURIST ATTRACTION</ion-label>
 				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
@@ -111,11 +116,13 @@
 					<button ion-button (click)="reset()">Reset</button>
 				</ion-col>
 			</ion-row>
-			<ion-row>
-				<ion-col style="text-align: center;">
-					<button ion-button navPush="HotelListPage"> Hotel list </button>
-				</ion-col>
-			</ion-row>
+			<div *ngIf="user=='admin@test.com'">
+				<ion-row>
+					<ion-col style="text-align: center;">
+						<button ion-button navPush="HotelListPage"> Hotel list </button>
+					</ion-col>
+				</ion-row>
+			</div>
 		</div>
 	</ion-list>
 

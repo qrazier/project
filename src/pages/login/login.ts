@@ -24,7 +24,7 @@ export class LoginPage {
           duration: 3000
           }).present();
           
-          this.navCtrl.setRoot('HomePage');
+          this.navCtrl.setRoot('HomePage', {user: user});
       }, error => {
         let alert = this.alertCtrl.create({
           title: 'Login Error',

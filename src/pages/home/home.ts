@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, Events } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { ResultPage } from '../result/result';
+import { LoginPage } from './../login/login';
 
 @IonicPage()
 @Component({
@@ -10,11 +12,15 @@ import { ResultPage } from '../result/result';
 })
 
 export class HomePage {
-	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public events: Events) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+		public events: Events, public app: App, public afAuth: AngularFireAuth,
+		private toast: ToastController,) {
 		this.station = "KL Sentral";
 		this.type = "Any";
 		this.halal = true;
+		this.user = this.navParams.data.user.email;
 	}
+	public user: any;
 
 	public station: string = "";
 	public distance: string = "";
@@ -29,6 +35,17 @@ export class HomePage {
 
 	//tourist_attraction
 
+	logoutClicked() {
+		console.log("Logout");
+		this.afAuth.auth.signOut().then(() => {
+			this.toast.create({
+				message: `Logout.`,
+				duration: 3000
+			}).present();
+		});
+		var nav = this.app.getRootNav();
+		nav.setRoot(LoginPage);
+	}
 
 	stationOpt() {
 		let stationOp = this.station;

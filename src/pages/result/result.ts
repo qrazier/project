@@ -2,10 +2,14 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { HotelListProvider } from './../../providers/hotel-list/hotel-list';
 import { RestaurantProvider } from './../../providers/restaurant/restaurant';
+import { MallListProvider } from './../../providers/mall/mall';
+import { AttractionListProvider } from './../../providers/attraction/attraction';
 
 import { MapPage } from '../map/map';
 import { Hotel } from '../../models/hotel';
 import { Restaurant } from '../../models/restaurant';
+import { Mall } from '../../models/mall';
+import { Attraction } from '../../models/attraction';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
@@ -31,11 +35,14 @@ export class ResultPage {
   fastFoodRef$: Observable<Restaurant[]>;
   familyStyleRef$: Observable<Restaurant[]>;
   japaneseRef$: Observable<Restaurant[]>;
+  mallRef$: Observable<Mall[]>;
+  attractionRef$: Observable<Attraction[]>;
 
   params: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,
-    private hotelList: HotelListProvider, private restaurantList: RestaurantProvider) {
+    private hotelList: HotelListProvider, private restaurantList: RestaurantProvider,
+    private mallList: MallListProvider, private attractionList: AttractionListProvider,) {
     //get data from user
     //console.log(this.navParams.data);
     this.choice = this.navParams.data.choice;
@@ -93,7 +100,30 @@ export class ResultPage {
             }));
           }
         );
-
+    }
+    else if (this.choice == "Mall") {
+      this.mallRef$ = this.mallList
+        .getMallList()
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes.map(c => ({
+              key: c.payload.key, ...c.payload.val(),
+            }));
+          }
+        );
+    }
+    else if (this.choice == "Attraction") {
+      this.attractionRef$ = this.attractionList
+        .getAttractionList()
+        .snapshotChanges()
+        .map(
+          changes => {
+            return changes.map(c => ({
+              key: c.payload.key, ...c.payload.val(),
+            }));
+          }
+        );
     }
   }
 
@@ -133,15 +163,14 @@ export class ResultPage {
   }
 
   returnRestaurant(item) {
-    
+
     if (this.distance.length > 0) {
       if (item.distance < 250) this.d = "Near";
       else if (250 <= item.distance && item.distance <= 1000) this.d = "Intermediate";
       else if (item.distance > 1000) this.d = "Far";
       else this.d = "";
     }
-    console.log("Distance :" + this.distance);
-    console.log("D :" + this.d);
+    
     if (this.distance.length > 0) {
       if (this.station == item.station && this.distance == this.d) return true;
       else return false;

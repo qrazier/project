@@ -18,6 +18,8 @@ import { MapPage } from '../pages/map/map';
 import { User } from '../providers/user/user';
 import { HotelListProvider } from '../providers/hotel-list/hotel-list';
 import { RestaurantProvider } from '../providers/restaurant/restaurant';
+import { MallListProvider } from '../providers/mall/mall';
+import { AttractionListProvider } from '../providers/attraction/attraction';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { RestaurantProvider } from '../providers/restaurant/restaurant';
     User,
     HotelListProvider,
     RestaurantProvider,
+    MallListProvider,
+    AttractionListProvider,
   ]
 })
 export class AppModule {}
