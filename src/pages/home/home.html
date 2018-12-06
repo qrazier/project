@@ -98,11 +98,18 @@
 
 		<div *ngIf="choice=='Attraction'" class="line">
 			<ion-item>
-				<ion-label class="black">TOURIST ATTRACTION</ion-label>
+				<ion-label class="black">TOURIST ATTRACTION DISTANCE</ion-label>
 				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
 					<ion-option value="Near">Near (&lt; 100m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
 					<ion-option value="Far">Far (&gt; 500m)</ion-option>
+				</ion-select>
+			</ion-item>
+			<ion-item>
+				<ion-label class="black">TOURIST ATTRACTION FEE</ion-label>
+				<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
+					<ion-option value="Low">Low (&lt; RM 50)</ion-option>
+					<ion-option value="Normal">Normal (&ge; RM 50)</ion-option>
 				</ion-select>
 			</ion-item>
 		</div>
@@ -116,7 +123,7 @@
 					<button ion-button (click)="reset()">Reset</button>
 				</ion-col>
 			</ion-row>
-			<div *ngIf="user=='admin@test.com'">
+			<div *ngIf="user=='test@test.com'">
 				<ion-row>
 					<ion-col style="text-align: center;">
 						<button ion-button navPush="HotelListPage"> Hotel list </button>

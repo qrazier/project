@@ -99,6 +99,7 @@ export class HomePage {
 		this.station = "KL Sentral";
 		this.distance = "";
 		this.rate = "";
+		this.type = "Any";
 		this.choice = "No";
 	}
 }
