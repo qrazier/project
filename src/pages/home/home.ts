@@ -18,9 +18,9 @@ export class HomePage {
 		this.station = "KL Sentral";
 		this.type = "Any";
 		this.halal = true;
-		this.user = this.navParams.data.user.email;
+		//this.user = this.navParams.data.user.email;
 	}
-	public user: any;
+	public user: any="";
 
 	public station: string = "";
 	public distance: string = "";

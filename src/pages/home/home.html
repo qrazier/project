@@ -3,9 +3,14 @@
 	<ion-navbar>
 		<ion-title>Hello Tourist</ion-title>
 		<ion-buttons end>
-			<button (click)="logoutClicked()" ion-button>Logout&nbsp;
-				<ion-icon name="close"></ion-icon>
+			<button *ngIf="user; else notShow" (click)="loginClicked()" ion-button>Login&nbsp;
+				<ion-icon name="key"></ion-icon>
 			</button>
+			<ng-template #notShow>
+				<button (click)="logoutClicked()" ion-button>Logout&nbsp;
+					<ion-icon name="close"></ion-icon>
+				</button>
+			</ng-template>
 		</ion-buttons>
 	</ion-navbar>
 	<style>
@@ -32,11 +37,11 @@
 		</ion-item>
 
 		<ion-item>
-			<ion-label class="black">SEARCHING FOR...</ion-label>
+			<ion-label class="black">INFORMATION</ion-label>
 			<ion-select (ionChange)="choiceOpt();" [(ngModel)]="choice">
 				<ion-option value="Hotel">Hotel</ion-option>
 				<ion-option value="Restaurant">Restaurant</ion-option>
-				<ion-option value="Mall">Mall</ion-option>
+				<ion-option value="Mall">Shopping</ion-option>
 				<ion-option value="Attraction">Tourist Attraction</ion-option>
 			</ion-select>
 		</ion-item>
@@ -86,6 +91,16 @@
 		</div>
 
 		<div *ngIf="choice=='Mall'" class="line">
+			<ion-item>
+				<ion-label class="black">SHOPPING TYPE</ion-label>
+				<ion-select (ionChange)="typeOpt();" [(ngModel)]="type">
+					<ion-option value="Any">Any</ion-option>
+					<ion-option value="FastFood">Fast Food</ion-option>
+					<ion-option value="Cafe">Cafe</ion-option>
+					<ion-option value="FamilyStyle">Family Style</ion-option>
+					<ion-option value="Japanese">Japanese</ion-option>
+				</ion-select>
+			</ion-item>
 			<ion-item>
 				<ion-label class="black">MALL DISTANCE</ion-label>
 				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">

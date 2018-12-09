@@ -14,6 +14,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
 import { MyApp } from './app.component';
 import { ResultPage } from '../pages/result/result';
 import { MapPage } from '../pages/map/map';
+import { SplashPage } from '../pages/splash/splash';
 
 import { User } from '../providers/user/user';
 import { HotelListProvider } from '../providers/hotel-list/hotel-list';
@@ -26,6 +27,7 @@ import { AttractionListProvider } from '../providers/attraction/attraction';
     MyApp,
     ResultPage,
     MapPage,
+    SplashPage,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +42,7 @@ import { AttractionListProvider } from '../providers/attraction/attraction';
     MyApp,
     ResultPage,
     MapPage,
+    SplashPage,
   ],
   providers: [
     StatusBar,

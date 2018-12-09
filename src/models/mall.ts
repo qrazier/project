@@ -4,4 +4,5 @@ export interface Mall{
     station: string;
     distance: string;
     phone: string;
+    type: string;
 } 
