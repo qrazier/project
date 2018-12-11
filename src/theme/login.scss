@@ -1,0 +1,19 @@
+.signInModal{
+    padding: 30px;
+    .modal-wrapper{
+        border: 1px solid black;
+        border-radius: 7px;
+        height: 50% !important;
+        margin-top: 10%;
+
+        ion-list{
+            .item{
+                background: none !important;
+                button{
+                    margin-top: 25px !important;
+                    height: 4rem !important;
+                }
+            }
+        }
+    }
+}

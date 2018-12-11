@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
 
-import { MapPage } from '../map/map';
+//import { MapPage } from '../map/map';
 import { RestaurantProvider } from '../../providers/restaurant/restaurant'
 import { Observable } from 'rxjs/Observable';
 import { Restaurant } from 'models/restaurant';

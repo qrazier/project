@@ -12,7 +12,7 @@ export class SplashPage {
  
   }
  
-  /*ionViewDidEnter() {
+  ionViewDidEnter() {
  
     this.splashScreen.hide();
  
@@ -20,6 +20,6 @@ export class SplashPage {
       this.viewCtrl.dismiss();
     }, 4000);
  
-  }*/
+  }
  
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams, ModalController, Events, ToastController } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, ModalController, Events, ToastController, ModalOptions } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { ResultPage } from '../result/result';
-import { LoginPage } from './../login/login';
+//import { LoginPage } from './../login/login';
+import { User } from 'models/user';
 
 @IonicPage()
 @Component({
@@ -12,15 +13,17 @@ import { LoginPage } from './../login/login';
 })
 
 export class HomePage {
+	user = {} as User;
+
 	constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
 		public events: Events, public app: App, public afAuth: AngularFireAuth,
-		private toast: ToastController,) {
+		private toast: ToastController, ) {
 		this.station = "KL Sentral";
 		this.type = "Any";
 		this.halal = true;
-		//this.user = this.navParams.data.user.email;
+		console.log(this.user.email);
+		if (this.user.email != undefined) this.user = this.navParams.data.user.email;
 	}
-	public user: any="";
 
 	public station: string = "";
 	public distance: string = "";
@@ -44,7 +47,15 @@ export class HomePage {
 			}).present();
 		});
 		var nav = this.app.getRootNav();
-		nav.setRoot(LoginPage);
+		nav.setRoot('HomePage');
+		console.log("User :" + this.user + ".");
+	}
+	loginClicked() {
+		const modalOptions: ModalOptions = {
+			cssClass: "signInModal"
+		};
+		const profileModal = this.modalCtrl.create('LoginPage', {}, modalOptions);
+		profileModal.present();
 	}
 
 	stationOpt() {

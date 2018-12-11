@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, ViewController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -13,7 +13,7 @@ export class LoginPage {
   user = {} as User;
 
   constructor(private afAuth: AngularFireAuth, private toast: ToastController, private alertCtrl: AlertController,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
   }
 
   async login(user: User){
@@ -37,6 +37,10 @@ export class LoginPage {
   
   register(){
 	  this.navCtrl.push('RegisterPage');
+  }
+
+  close(){
+    this.viewCtrl.dismiss();
   }
 
 }

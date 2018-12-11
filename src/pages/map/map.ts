@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { ModalController, NavController, NavParams, Platform } from 'ionic-angular';
+import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 declare var google;
 let map: any;
