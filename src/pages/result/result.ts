@@ -25,10 +25,12 @@ export class ResultPage {
   rate: string;
   type: string;
   halal: string;
+  sType: string;
 
   d: string;
   r: string;
   h: string;
+  t: string;
 
   hotelRef$: Observable<Hotel[]>;
   cafeRef$: Observable<Restaurant[]>;
@@ -51,6 +53,7 @@ export class ResultPage {
     this.rate = this.navParams.data.rate;
     this.type = this.navParams.data.type;
     this.halal = this.navParams.data.halal;
+    this.sType = this.navParams.data.sType;
 
     if (this.choice == "Hotel") {
       this.hotelRef$ = this.hotelList
@@ -127,7 +130,7 @@ export class ResultPage {
     }
   }
 
-  returnList(item) {
+  returnHotel(item) {
 
     if (this.distance.length > 0) {
       if (item.hDistance < 100) this.d = "Near";
@@ -190,11 +193,31 @@ export class ResultPage {
 
   returnMall(item){
     if (this.distance.length > 0) {
-      if (item.distance < 100) this.d = "Near";
-      else if (100 <= item.distance && item.distance <= 500) this.d = "Intermediate";
+      if (item.distance < 250) this.d = "Near";
+      else if (250 <= item.distance && item.distance <= 500) this.d = "Intermediate";
       else if (item.distance > 500) this.d = "Far";
       else this.d = "";
     }
+    
+
+
+    if (this.station.length > 0 && this.distance.length > 0 && this.sType.length > 0) {
+      if (this.station == item.station && this.distance == this.d && this.sType == item.type) return true;
+      else return false;
+    }
+    else if (this.station.length > 0 && this.distance.length > 0) {
+      if (this.station == item.station && this.distance == this.d) return true;
+      else return false;
+    }
+    else if (this.station.length > 0 && this.sType.length > 0) {
+      if (this.station == item.station && this.sType == item.type) return true;
+      else return false;
+    }
+    else if (this.station.length > 0) {
+      if (this.station == item.station) return true;
+      else return false;
+    }
+    else return false;
   }
 
   returnAttraction(item){
@@ -205,10 +228,8 @@ export class ResultPage {
       else this.d = "";
     }
     if (this.rate.length > 0) {
-      if (item.hRate < 100) this.r = "Low";
-      else if (100 <= item.hRate && item.hRate <= 250) this.r = "Normal";
-      else if (item.hRate > 250) this.r = "High";
-      else this.r = "";
+      if (item.fee < 50) this.r = "Low";
+      else this.r = "Normal";
     }
 
     if (this.station.length > 0 && this.distance.length > 0 && this.rate.length > 0) {
@@ -232,7 +253,8 @@ export class ResultPage {
 
   findMap(item) {
     this.navCtrl.push(MapPage, {
-      item: item
+      item: item,
+      info: this.choice,
     });
   }
 }

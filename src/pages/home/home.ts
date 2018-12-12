@@ -21,18 +21,24 @@ export class HomePage {
 		this.station = "KL Sentral";
 		this.type = "Any";
 		this.halal = true;
-		console.log(this.user.email);
-		if (this.user.email != undefined) this.user = this.navParams.data.user.email;
+		this.login = this.navParams.data.login;
+		
+		if (this.login) this.user = this.navParams.data.user.email;
+		
+		console.log(this.login);
+		console.log(this.user);
 	}
 
 	public station: string = "";
 	public distance: string = "";
+	public login = false;
 	choice: string = "No";
 
 	//hotel
 	public rate: string = "";
 	//restaurant
 	public type: string = "";
+	public sType: string = "";
 	public halal: boolean;
 	//mall
 
@@ -82,6 +88,11 @@ export class HomePage {
 		let halalOp = this.halal;
 		return halalOp;
 	}
+	sTypeOpt(){
+		let sTypeOp = this.sType;
+		return sTypeOp;
+		
+	}
 
 	result() {
 		let station = this.stationOpt();
@@ -90,11 +101,7 @@ export class HomePage {
 		let rate = this.rateOpt();
 		let type = this.typeOpt();
 		let halal = this.halalOpt();
-
-		if (choice == "Hotel") { }
-		else if (choice == "Restaurant") { }
-		else if (choice == "Mall") { }
-		else { }
+		let sType = this.sTypeOpt();
 
 		this.navCtrl.push(ResultPage, {
 			choice: choice,
@@ -103,6 +110,7 @@ export class HomePage {
 			rate: rate,
 			type: type,
 			halal: halal,
+			sType: sType,
 		});
 	}
 
@@ -112,5 +120,6 @@ export class HomePage {
 		this.rate = "";
 		this.type = "Any";
 		this.choice = "No";
+		this.sType = "";
 	}
 }

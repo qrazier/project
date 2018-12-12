@@ -22,9 +22,10 @@ export class MapPage {
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer;
 
-  hotel: any;
+  item: any;
   start: any;
   end: any;
+  info: string;
 
   restModal: any;
 
@@ -32,14 +33,15 @@ export class MapPage {
   showHide: boolean = true;
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public navParams: NavParams) {
-    this.hotel = this.navParams.data.item;
-    this.start = "Monorail " + this.hotel.station;
-    this.end = this.hotel.name + ', ' + this.hotel.station;
+    this.item = this.navParams.data.item;
+    this.info = this.navParams.data.info;
 
+    this.start = "Monorail " + this.item.station;
+    this.end = this.item.name + ', ' + this.item.station;
   }
 
   ionViewDidLoad() {
-    console.log("Hello");
+    //console.log("Hello");
     this.initMap();
     this.mapFunc();
   }
@@ -101,7 +103,7 @@ export class MapPage {
   }
 
   /*public restaurant() {
-    let profileModal = this.modalCtrl.create('RestaurantPage', { hotel: this.hotel });
+    let profileModal = this.modalCtrl.create('RestaurantPage', { item: this.item });
     profileModal.present();
   }*/
 
@@ -112,6 +114,11 @@ export class MapPage {
     else {
       this.showHide = true;
     }
+  }
+
+  information() {
+    let profileModal = this.modalCtrl.create('InformationPage', { item: this.item, info: this.info });
+    profileModal.present();
   }
 
   /*createMarker(latlng, title) {

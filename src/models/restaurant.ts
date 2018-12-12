@@ -5,4 +5,5 @@ export interface Restaurant{
     station: string;
     image: any;
     distance: any;
+    phone: string;
 } 

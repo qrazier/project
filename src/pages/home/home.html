@@ -3,7 +3,7 @@
 	<ion-navbar>
 		<ion-title>Hello Tourist</ion-title>
 		<ion-buttons end>
-			<button *ngIf="user.email == undefined; else notShow" (click)="loginClicked()" ion-button>Login&nbsp;
+			<button *ngIf="user == {}; else notShow" (click)="loginClicked()" ion-button>Login&nbsp;
 				<ion-icon name="key"></ion-icon>
 			</button>
 			<ng-template #notShow>
@@ -93,8 +93,7 @@
 		<div *ngIf="choice=='Mall'">
 			<ion-item>
 				<ion-label class="black">SHOPPING TYPE</ion-label>
-				<ion-select (ionChange)="typeOpt();" [(ngModel)]="type">
-					<ion-option value="Any">Any</ion-option>
+				<ion-select (ionChange)="sTypeOpt();" [(ngModel)]="sType">
 					<ion-option value="Groceries">Groceries</ion-option>
 					<ion-option value="Apparel">Apparel</ion-option>
 					<ion-option value="Mall">Mall</ion-option>
@@ -102,7 +101,7 @@
 				</ion-select>
 			</ion-item>
 			<ion-item>
-				<ion-label class="black">MALL DISTANCE</ion-label>
+				<ion-label class="black">SHOPPING DISTANCE</ion-label>
 				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
 					<ion-option value="Near">Near (&lt; 250m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (250m - 500m)</ion-option>
@@ -132,10 +131,10 @@
 		<div *ngIf="choice!='No'">
 			<ion-row>
 				<ion-col style="text-align: center;">
-					<button ion-button (click)="result()">Search</button>
+					<button ion-button color="danger" (click)="reset()">Reset</button>
 				</ion-col>
 				<ion-col style="text-align: center;">
-					<button ion-button (click)="reset()">Reset</button>
+					<button ion-button color="primary" (click)="result()">Search</button>
 				</ion-col>
 			</ion-row>
 			<div *ngIf="user=='test@test.com'">

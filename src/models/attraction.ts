@@ -4,4 +4,5 @@ export interface Attraction{
     station: string;
     distance: string;
     fee: string;
+    type: string;
 } 
