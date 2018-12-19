@@ -23,15 +23,16 @@ export class HomePage {
 		this.halal = true;
 		this.login = this.navParams.data.login;
 		
-		if (this.login) this.user = this.navParams.data.user.email;
+		if (this.login) this.email = this.navParams.data.user.email;
 		
 		console.log(this.login);
-		console.log(this.user);
+		console.log(this.email);
 	}
 
 	public station: string = "";
 	public distance: string = "";
 	public login = false;
+	public email = "";
 	choice: string = "No";
 
 	//hotel
@@ -52,8 +53,7 @@ export class HomePage {
 				duration: 3000
 			}).present();
 		});
-		var nav = this.app.getRootNav();
-		nav.setRoot('HomePage');
+		this.navCtrl.setRoot('HomePage', {login: false});
 		console.log("User :" + this.user + ".");
 	}
 	loginClicked() {

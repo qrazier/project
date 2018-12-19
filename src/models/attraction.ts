@@ -5,4 +5,5 @@ export interface Attraction{
     distance: string;
     fee: string;
     type: string;
+    image: string;
 } 

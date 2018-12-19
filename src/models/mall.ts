@@ -5,4 +5,5 @@ export interface Mall{
     distance: string;
     phone: string;
     type: string;
+    image: string;
 } 

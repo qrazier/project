@@ -56,77 +56,22 @@ export class ResultPage {
     this.sType = this.navParams.data.sType;
 
     if (this.choice == "Hotel") {
-      this.hotelRef$ = this.hotelList
-        .getHotelList()
-        .snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.hotelRef$ = this.hotelList.getStation();
     }
     else if (this.choice == "Restaurant") {
-      this.cafeRef$ = this.restaurantList.getCafeList().snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.cafeRef$ = this.restaurantList.getCafeList();
 
-      this.fastFoodRef$ = this.restaurantList.getFastFoodList().snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.fastFoodRef$ = this.restaurantList.getFastFoodList();
 
-      this.familyStyleRef$ = this.restaurantList.getFamilyStyleList().snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.familyStyleRef$ = this.restaurantList.getFamilyStyleList();
 
-      this.japaneseRef$ = this.restaurantList.getJapaneseList().snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.japaneseRef$ = this.restaurantList.getJapaneseList();
     }
     else if (this.choice == "Mall") {
-      this.mallRef$ = this.mallList
-        .getMallList()
-        .snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.mallRef$ = this.mallList.getMallList();
     }
     else if (this.choice == "Attraction") {
-      this.attractionRef$ = this.attractionList
-        .getAttractionList()
-        .snapshotChanges()
-        .map(
-          changes => {
-            return changes.map(c => ({
-              key: c.payload.key, ...c.payload.val(),
-            }));
-          }
-        );
+      this.attractionRef$ = this.attractionList.getAttractionList();
     }
   }
 

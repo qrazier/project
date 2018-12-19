@@ -6,6 +6,12 @@ import { Hotel } from '../../models/hotel'
 export class HotelListProvider {
 
   private hotelRef = this.database.list<Hotel>('hotel');
+  
+  private station = this.database.list<Hotel>('hotel', ref => ref.orderByChild('station')).valueChanges();
+  private name = this.database.list<Hotel>('hotel', ref => ref.orderByChild('name')).valueChanges();
+  private rate = this.database.list<Hotel>('hotel', ref => ref.orderByChild('hRate')).valueChanges();
+  private distance = this.database.list<Hotel>('hotel', ref => ref.orderByChild('hDistance')).valueChanges();
+
   constructor(private database: AngularFireDatabase) {
 
   }
@@ -26,7 +32,16 @@ export class HotelListProvider {
     return this.hotelRef.remove(hotel.key);
   }
 
-  getResult(hotel: Hotel){
-    //this.hotelRef.list();
+  getStation(){
+    return this.station;
+  }
+  getName(){
+    return this.name;
+  }
+  getRate(){
+    return this.rate;
+  }
+  getDistance(){
+    return this.distance;
   }
 }

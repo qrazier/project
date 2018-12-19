@@ -7,28 +7,29 @@ export class RestaurantProvider {
 
   //private restaurantRef = this.database.list<Restaurant>('restaurant');
   private restaurantRef: any;
+  //this.database.list<Mall>('mall', ref => ref.orderByChild('station')).valueChanges();
   constructor(private database: AngularFireDatabase) {
   }
 
   getCafeList(){
-    this.restaurantRef = this.database.list<Restaurant>('/restaurant/Cafe');
+    this.restaurantRef = this.database.list<Restaurant>('/restaurant/Cafe', ref => ref.orderByChild('station')).valueChanges();
     return this.restaurantRef;
   }
 
   getFamilyStyleList(){
-    this.restaurantRef = this.database.list<Restaurant>('/restaurant/FamilyStyle');
+    this.restaurantRef = this.database.list<Restaurant>('/restaurant/FamilyStyle', ref => ref.orderByChild('station')).valueChanges();
     
     return this.restaurantRef;
   }
 
   getJapaneseList(){
-    this.restaurantRef = this.database.list<Restaurant>('/restaurant/Japanese');
+    this.restaurantRef = this.database.list<Restaurant>('/restaurant/Japanese', ref => ref.orderByChild('station')).valueChanges();
     
     return this.restaurantRef;
   }
 
   getFastFoodList(){
-    this.restaurantRef = this.database.list<Restaurant>('/restaurant/FastFood');    
+    this.restaurantRef = this.database.list<Restaurant>('/restaurant/FastFood', ref => ref.orderByChild('station')).valueChanges();    
     
     return this.restaurantRef;
   }

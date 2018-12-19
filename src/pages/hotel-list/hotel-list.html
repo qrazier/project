@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title>List of Hotels</ion-title>
-    
+
     <ion-buttons end>
       <button navPush="AddHotelPage" ion-button>
         <ion-icon name="add"></ion-icon>
@@ -21,10 +21,184 @@
 
 <ion-content padding>
   <ion-list>
- 
-    <ion-item *ngFor="let hotel of hotelRef$ | async" 
-    detail-push navPush="EditHotelPage" [navParams]="{hotel:hotel}">
+
+    <ion-item *ngFor="let hotel of hotelRef$ | async" detail-push navPush="EditHotelPage" [navParams]="{hotel:hotel}">
       {{hotel.station}} | {{hotel.name}}
     </ion-item>
   </ion-list>
+
+  <ion-grid>Hotel
+    <ion-row>
+      <ion-col>
+        <b>Station</b>
+      </ion-col>
+      <ion-col>
+        <b>Name</b>
+      </ion-col>
+      <ion-col>
+        <b>Rate (RM)</b>
+      </ion-col>
+      <ion-col>
+        <b>Distance (m)</b>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (hotelReff$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        {{item.hRate}}
+      </ion-col>
+      <ion-col>
+        {{item.hDistance}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>Mall
+    <ion-row>
+      <ion-col>
+        <b>Station</b>
+      </ion-col>
+      <ion-col>
+        <b>Name</b>
+      </ion-col>
+      <ion-col>
+        <b>Distance (m)</b>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (mallRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>Restaurant
+    <ion-row>
+      <ion-col>
+        <b>Station</b>
+      </ion-col>
+      <ion-col>
+        <b>Name</b>
+      </ion-col>
+      <ion-col>
+        <b>Type</b>
+      </ion-col>
+      <ion-col>
+        <b>Distance (m)</b>
+      </ion-col>
+      <ion-col>
+        <b>Halal</b>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (cafeRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        Cafe
+      </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+      <ion-col>
+        {{item.halal}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (ffRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        Fast Food
+      </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+      <ion-col>
+        {{item.halal}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (familyRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        Family Style
+      </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+      <ion-col>
+        {{item.halal}}
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (japRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+        Japanese
+      </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+      <ion-col>
+        {{item.halal}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>Attraction
+    <ion-row>
+      <ion-col>
+        <b>Station</b>
+      </ion-col>
+      <ion-col>
+        <b>Name</b>
+      </ion-col>
+      <ion-col>
+        <b>Fee (RM)</b>
+      </ion-col>
+      <ion-col>
+        <b>Distance (m)</b>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of (attractionRef$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.station}}
+      </ion-col>
+      <ion-col>
+        {{item.name}}
+      </ion-col>
+      <ion-col>
+          {{item.fee}}
+        </ion-col>
+      <ion-col>
+        {{item.distance}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -3,7 +3,7 @@
 	<ion-navbar>
 		<ion-title>Hello Tourist</ion-title>
 		<ion-buttons end>
-			<button *ngIf="user == {}; else notShow" (click)="loginClicked()" ion-button>Login&nbsp;
+			<button *ngIf="email == ''; else notShow" (click)="loginClicked()" ion-button>Login&nbsp;
 				<ion-icon name="key"></ion-icon>
 			</button>
 			<ng-template #notShow>
@@ -137,7 +137,7 @@
 					<button ion-button color="primary" (click)="result()">Search</button>
 				</ion-col>
 			</ion-row>
-			<div *ngIf="user=='test@test.com'">
+			<div *ngIf="email == 'test@test.com'">
 				<ion-row>
 					<ion-col style="text-align: center;">
 						<button ion-button navPush="HotelListPage"> Hotel list </button>
