@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -24,7 +24,7 @@ export class InformationPage {
   mallRef$: Observable<Mall[]>;
   attractionRef$: Observable<Attraction[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.info = this.navParams.data.info;
     this.item = this.navParams.data.item;
 
@@ -34,4 +34,8 @@ export class InformationPage {
 
   public info: string;
   public item: any;
+
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
 }
