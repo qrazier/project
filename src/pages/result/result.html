@@ -7,175 +7,214 @@
 
 
 <ion-content padding>
-  <p>Station: {{station}}</p>
-  <p>Choice: {{choice}}</p>
-  <p>Hotel Distance: {{distance}}</p>
-  <p>Hotel Rate: {{rate}}</p>
-  <p>Restaurant Type: {{type}}</p>
-  <p>Restaurant Halal: {{halal}}</p>
-  <p>Shopping Type: {{sType}}</p>
+  <div style="text-align: center">
+    Station: {{station}}<br>Choice: {{choice}}<br>
+    <div *ngIf="choice == 'Hotel'">
+      Hotel Distance: {{displayD}}<br>Hotel Rate: {{displayR}}
+    </div>
+    <div *ngIf="choice == 'Restaurant'">
+      Restaurant Distance: {{displayD}}<br>Restaurant Type: {{type}}<br>Restaurant Halal: {{halal}}
+    </div>
+    <div *ngIf="choice == 'Mall'">
+      Mall Distance: {{displayD}}<br>Mall Type: {{type}}<br>
+    </div>
+    <div *ngIf="choice == 'Attraction'">
+      Attraction Distance: {{displayD}}<br>Attraction Fee: {{displayR}}<br>
+    </div>
+    <br>
+  </div>
 
   <div *ngIf="choice == 'Hotel'">
     <div *ngIf="hotelRef$ | async; let hotelRef">
-
-      <ion-list *ngFor="let item of hotelRef">
-        <!-- Repeat the ion-item for as many items that we have inside of the hotel list. -->
-        <div ion-item *ngIf="returnHotel(item)">
-          <div style="text-align:center;">
-            <div class="clear">
-              <h2>Hotel Name: {{item.name}}</h2>
-              <h3>Hotel Station: {{item.station}}</h3>
-              <p>Hotel Distance: {{item.hDistance}}m</p>
-              <p>Hotel Rate: RM {{item.hRate}}</p>
-              <button class="button-md" (click)="findMap(item)">Find direction!</button>
-            </div>
-          </div>
-          <ion-item-divider></ion-item-divider>
+      <ion-grid>
+        <ion-row style="font-weight: bold; border-bottom: 1px solid black">
+          <ion-col>Station</ion-col>
+          <ion-col>Name</ion-col>
+          <ion-col>Distance</ion-col>
+          <ion-col>Rate</ion-col>
+          <ion-col>Action</ion-col>
+        </ion-row>
+        <div *ngFor="let item of hotelRef">
+          <ion-row *ngIf="returnHotel(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.hDistance}}m</ion-col>
+            <ion-col>RM {{item.hRate}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
+      </ion-grid>
     </div>
   </div>
 
   <div *ngIf="choice == 'Restaurant'">
-    <!--If type is 'Any'-->
-    <div *ngIf="type=='Any'">
+    <ion-grid>
+      <ion-row style="font-weight: bold; border-bottom: 1px solid black">
+        <ion-col>Station</ion-col>
+        <ion-col>Name</ion-col>
+        <ion-col>Distance</ion-col>
+        <ion-col>Type</ion-col>
+        <ion-col>Halal</ion-col>
+        <ion-col>Action</ion-col>
+      </ion-row>
 
-      <h2>Cafe List</h2>
-      <ion-list *ngFor="let item of cafeRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
+      <!--If type is 'Any'-->
+      <div *ngIf="type=='Any'">
+        <div *ngFor="let item of cafeRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Cafe</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
+        <div *ngFor="let item of fastFoodRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Fast Food</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
+        </div>
+        <div *ngFor="let item of familyStyleRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Family Style</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
+        </div>
+        <div *ngFor="let item of japaneseRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Japanese</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
+        </div>
+      </div>
 
-      <h2>Fast Food List</h2>
-      <ion-list *ngFor="let item of fastFoodRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
+      <!--If type is 'Cafe'-->
+      <div *ngIf="type=='Cafe'">
+        <div *ngFor="let item of cafeRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Cafe</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
+      </div>
 
-      <h2>Family Style List</h2>
-      <ion-list *ngFor="let item of familyStyleRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
+      <!--If type is 'FastFood'-->
+      <div *ngIf="type=='FastFood'">
+        <div *ngFor="let item of fastFoodRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Fast Food</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
+      </div>
 
-      <h2>Japanese List</h2>
-      <ion-list *ngFor="let item of japaneseRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
+      <!--If type is 'FamilyStyle'-->
+      <div *ngIf="type=='FamilyStyle'">
+        <div *ngFor="let item of familyStyleRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Family Style</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
-    </div>
+      </div>
 
-    <!--If type is 'Cafe'-->
-    <div *ngIf="type=='Cafe'">
-      <h2>Cafe List</h2>
-      <ion-list *ngFor="let item of cafeRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
+      <!--If type is 'Japanese'-->
+      <div *ngIf="type=='Japanese'">
+        <div *ngFor="let item of japaneseRef$ | async">
+          <ion-row *ngIf="returnRestaurant(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>Japanese</ion-col>
+            <ion-col>{{item.halal}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-      </ion-list>
-    </div>
-
-    <!--If type is 'FastFood'-->
-    <div *ngIf="type=='FastFood'">
-      <h2>Fast Food List</h2>
-      <ion-list *ngFor="let item of fastFoodRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
-        </div>
-      </ion-list>
-    </div>
-
-    <!--If type is 'FamilyStyle'-->
-    <div *ngIf="type=='FamilyStyle'">
-      <h2>Family Style List</h2>
-      <ion-list *ngFor="let item of familyStyleRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
-        </div>
-      </ion-list>
-    </div>
-
-    <!--If type is 'Japanese'-->
-    <div *ngIf="type=='Japanese'">
-      <h2>Japanese List</h2>
-      <ion-list *ngFor="let item of japaneseRef$ | async">
-        <div *ngIf="returnRestaurant(item)">
-          <button ion-item *ngIf="returnHalal(item)" (click)="findMap(item)">
-            <p>Restaurant Name: {{item.name}}</p>
-            <p>Restaurant Distance: {{item.distance}}m</p>
-            <p>Halal: {{item.halal}}</p>
-          </button>
-        </div>
-      </ion-list>
-    </div>
+      </div>
+    </ion-grid>
   </div>
 
   <div *ngIf="choice == 'Mall'">
     <div *ngIf="mallRef$ | async; let mallRef">
-      <div *ngFor="let item of mallRef">
-        <!-- Repeat the ion-item for as many items that we have inside of the mall list. -->
-        <ion-list *ngIf="returnMall(item)" style="text-align:center;">
-          <div class="clear">
-            <h2>Name: {{item.name}}</h2>
-            <h3>Station: {{item.station}}</h3>
-            <p>Type: {{item.type}}</p>
-            <p>Distance: {{item.distance}}m</p>
-            <p>Phone: {{item.phone}}</p>
-            <button class="button-md" (click)="findMap(item)">Find direction!</button>
-          </div>
-          <ion-item-divider></ion-item-divider>
-        </ion-list>
-      </div>
+      <ion-grid>
+        <ion-row style="font-weight: bold; border-bottom: 1px solid black">
+          <ion-col>Station</ion-col>
+          <ion-col>Name</ion-col>
+          <ion-col>Distance</ion-col>
+          <ion-col>Type</ion-col>
+          <ion-col>Action</ion-col>
+        </ion-row>
+        <div *ngFor="let item of mallRef">
+          <ion-row *ngIf="returnMall(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>{{item.type}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
+        </div>
+      </ion-grid>
     </div>
   </div>
 
   <div *ngIf="choice == 'Attraction'">
     <div *ngIf="attractionRef$ | async; let attractionRef">
-      <ion-list *ngFor="let item of attractionRef">
-        <!-- Repeat the ion-item for as many items that we have inside of the attraction list. -->
-        <div *ngIf="returnAttraction(item)" style="text-align:center;">
-          <div class="clear">
-            <h2>Tourist Attraction Name: {{item.name}}</h2>
-            <h3>Tourist Attraction Station: {{item.station}}</h3>
-            <p>Tourist Attraction Distance: {{item.distance}}m</p>
-            <p>Tourist Attraction Rate: RM {{item.fee}}</p>
-            <button class="button-md" (click)="findMap(item)">Find direction!</button>
-          </div>
+      <ion-grid>
+        <ion-row style="font-weight: bold; border-bottom: 1px solid black">
+          <ion-col>Station</ion-col>
+          <ion-col>Name</ion-col>
+          <ion-col>Distance</ion-col>
+          <ion-col>Fee</ion-col>
+          <ion-col>Action</ion-col>
+        </ion-row>
+        <div *ngFor="let item of attractionRef">
+          <ion-row *ngIf="returnAttraction(item)">
+            <ion-col>{{item.station}}</ion-col>
+            <ion-col>{{item.name}}</ion-col>
+            <ion-col>{{item.distance}}m</ion-col>
+            <ion-col>RM {{item.fee}}</ion-col>
+            <ion-col><button class="button-md" (click)="findMap(item)">Go</button></ion-col>
+            <ion-item-divider></ion-item-divider>
+          </ion-row>
         </div>
-        <ion-item-divider></ion-item-divider>
-      </ion-list>
+      </ion-grid>
     </div>
   </div>
+
 </ion-content>

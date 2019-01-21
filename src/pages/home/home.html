@@ -49,7 +49,8 @@
 		<div *ngIf="choice=='Hotel'">
 			<ion-item>
 				<ion-label class="black">HOTEL DISTANCE</ion-label>
-				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+				<ion-select (ionChange)="hDistanceOpt();" [(ngModel)]="hDistance">
+					<ion-option value=""></ion-option>
 					<ion-option value="Near">Near (&lt; 100m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
 					<ion-option value="Far">Far (&gt; 500m)</ion-option>
@@ -57,7 +58,8 @@
 			</ion-item>
 			<ion-item>
 				<ion-label class="black">HOTEL RATE (PER NIGHT)</ion-label>
-				<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
+				<ion-select (ionChange)="hRateOpt();" [(ngModel)]="hRate">
+					<ion-option value=""></ion-option>
 					<ion-option value="Low">Low (&lt; RM100)</ion-option>
 					<ion-option value="Normal">Normal (RM 100 - RM 250)</ion-option>
 					<ion-option value="High">High (&gt; RM250)</ion-option>
@@ -68,7 +70,8 @@
 		<div *ngIf="choice=='Restaurant'">
 			<ion-item>
 				<ion-label class="black">RESTAURANT DISTANCE</ion-label>
-				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+				<ion-select (ionChange)="rDistanceOpt();" [(ngModel)]="rDistance">
+					<ion-option value=""></ion-option>
 					<ion-option value="Near">Near (&lt; 250m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (250m - 1000m)</ion-option>
 					<ion-option value="Far">Far (&gt; 1000m)</ion-option>
@@ -76,7 +79,7 @@
 			</ion-item>
 			<ion-item>
 				<ion-label class="black">RESTAURANT TYPE</ion-label>
-				<ion-select (ionChange)="typeOpt();" [(ngModel)]="type">
+				<ion-select (ionChange)="rTypeOpt();" [(ngModel)]="rType">
 					<ion-option value="Any">Any</ion-option>
 					<ion-option value="FastFood">Fast Food</ion-option>
 					<ion-option value="Cafe">Cafe</ion-option>
@@ -93,7 +96,7 @@
 		<div *ngIf="choice=='Mall'">
 			<ion-item>
 				<ion-label class="black">SHOPPING TYPE</ion-label>
-				<ion-select (ionChange)="sTypeOpt();" [(ngModel)]="sType">
+				<ion-select (ionChange)="mTypeOpt();" [(ngModel)]="mType">
 					<ion-option value="Groceries">Groceries</ion-option>
 					<ion-option value="Apparel">Apparel</ion-option>
 					<ion-option value="Mall">Mall</ion-option>
@@ -102,7 +105,8 @@
 			</ion-item>
 			<ion-item>
 				<ion-label class="black">SHOPPING DISTANCE</ion-label>
-				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+				<ion-select (ionChange)="mDistanceOpt();" [(ngModel)]="mDistance">
+					<ion-option value=""></ion-option>
 					<ion-option value="Near">Near (&lt; 250m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (250m - 500m)</ion-option>
 					<ion-option value="Far">Far (&gt; 500m)</ion-option>
@@ -113,7 +117,8 @@
 		<div *ngIf="choice=='Attraction'">
 			<ion-item>
 				<ion-label class="black">ATTRACTION DISTANCE</ion-label>
-				<ion-select (ionChange)="distanceOpt();" [(ngModel)]="distance">
+				<ion-select (ionChange)="aDistanceOpt();" [(ngModel)]="aDistance">
+					<ion-option value=""></ion-option>
 					<ion-option value="Near">Near (&lt; 100m)</ion-option>
 					<ion-option value="Intermediate">Intermediate (100m - 500m)</ion-option>
 					<ion-option value="Far">Far (&gt; 500m)</ion-option>
@@ -121,7 +126,8 @@
 			</ion-item>
 			<ion-item>
 				<ion-label class="black">ATTRACTION FEE</ion-label>
-				<ion-select (ionChange)="rateOpt();" [(ngModel)]="rate">
+				<ion-select (ionChange)="aFeeOpt();" [(ngModel)]="aFee">
+					<ion-option value=""></ion-option>
 					<ion-option value="Low">Low (&lt; RM 50)</ion-option>
 					<ion-option value="Normal">Normal (&ge; RM 50)</ion-option>
 				</ion-select>

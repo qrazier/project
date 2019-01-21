@@ -27,15 +27,12 @@ export class InformationPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.info = this.navParams.data.info;
     this.item = this.navParams.data.item;
-
-    console.log("Info: " + this.info);
-    console.log("Item name: " + this.item.name);
   }
 
   public info: string;
   public item: any;
 
-  public closeModal(){
+  public closeModal() {
     this.viewCtrl.dismiss();
   }
 }

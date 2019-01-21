@@ -19,31 +19,32 @@ export class HomePage {
 		public events: Events, public app: App, public afAuth: AngularFireAuth,
 		private toast: ToastController, ) {
 		this.station = "KL Sentral";
-		this.type = "Any";
+		this.rType = "Any";
 		this.halal = true;
 		this.login = this.navParams.data.login;
-		
+		this.mType = "Groceries";
+
 		if (this.login) this.email = this.navParams.data.user.email;
-		
-		console.log(this.login);
-		console.log(this.email);
 	}
 
 	public station: string = "";
-	public distance: string = "";
 	public login = false;
 	public email = "";
 	choice: string = "No";
 
 	//hotel
-	public rate: string = "";
+	public hRate: string = "";
+	public hDistance: string = "";
 	//restaurant
-	public type: string = "";
-	public sType: string = "";
-	public halal: boolean;
+	public rDistance: string = "";
+	public rType: string;
+	public halal: boolean = true;
 	//mall
-
+	public mDistance: string = "";
+	public mType: string = "";
 	//tourist_attraction
+	public aDistance: string = "";
+	public aFee: string = "";
 
 	logoutClicked() {
 		console.log("Logout");
@@ -53,7 +54,7 @@ export class HomePage {
 				duration: 3000
 			}).present();
 		});
-		this.navCtrl.setRoot('HomePage', {login: false});
+		this.navCtrl.setRoot('HomePage', { login: false });
 		console.log("User :" + this.user + ".");
 	}
 	loginClicked() {
@@ -72,54 +73,115 @@ export class HomePage {
 		let choiceOp = this.choice;
 		return choiceOp;
 	}
-	distanceOpt() {
-		let distanceOp = this.distance;
+
+	//hotel
+	hDistanceOpt() {
+		let distanceOp = this.hDistance;
 		return distanceOp;
 	}
-	rateOpt() {
-		let rateOp = this.rate;
+	hRateOpt() {
+		let rateOp = this.hRate;
 		return rateOp;
 	}
-	typeOpt() {
-		let typeOp = this.type;
+
+	//restaurant
+	rDistanceOpt() {
+		let distanceOp = this.rDistance;
+		return distanceOp;
+	}
+	rTypeOpt() {
+		let typeOp = this.rType;
 		return typeOp;
 	}
 	halalOpt() {
 		let halalOp = this.halal;
 		return halalOp;
 	}
-	sTypeOpt(){
-		let sTypeOp = this.sType;
-		return sTypeOp;
-		
+
+	//mall
+	mDistanceOpt() {
+		let distanceOp = this.mDistance;
+		return distanceOp;
+	}
+	mTypeOpt() {
+		let typeOp = this.mType;
+		return typeOp;
+	}
+
+	//attraction
+	aDistanceOpt() {
+		let distanceOp = this.aDistance;
+		return distanceOp;
+	}
+	aFeeOpt() {
+		let rateOp = this.aFee;
+		return rateOp;
 	}
 
 	result() {
 		let station = this.stationOpt();
 		let choice = this.choiceOpt();
-		let distance = this.distanceOpt();
-		let rate = this.rateOpt();
-		let type = this.typeOpt();
-		let halal = this.halalOpt();
-		let sType = this.sTypeOpt();
 
-		this.navCtrl.push(ResultPage, {
-			choice: choice,
-			station: station,
-			distance: distance,
-			rate: rate,
-			type: type,
-			halal: halal,
-			sType: sType,
-		});
+		if (choice == 'Hotel') {
+			let distance = this.hDistanceOpt();
+			let rate = this.hRateOpt();
+
+			this.navCtrl.push(ResultPage, {
+				choice: choice,
+				station: station,
+				distance: distance,
+				rate: rate,
+			});
+		} else if (choice == 'Restaurant') {
+			let distance = this.rDistanceOpt();
+			let type = this.rTypeOpt();
+			let halal = this.halalOpt();
+
+			this.navCtrl.push(ResultPage, {
+				choice: choice,
+				station: station,
+				distance: distance,
+				type: type,
+				halal: halal,
+			});
+		} else if (choice == 'Mall') {
+			let distance = this.mDistanceOpt();
+			let type = this.mTypeOpt();
+
+			this.navCtrl.push(ResultPage, {
+				choice: choice,
+				station: station,
+				distance: distance,
+				type: type,
+			});
+		} else if (choice == 'Attraction') {
+			let distance = this.aDistanceOpt();
+			let fee = this.aFeeOpt();
+
+			this.navCtrl.push(ResultPage, {
+				choice: choice,
+				station: station,
+				distance: distance,
+				fee: fee,
+			});
+		}
 	}
 
 	reset() {
 		this.station = "KL Sentral";
-		this.distance = "";
-		this.rate = "";
-		this.type = "Any";
 		this.choice = "No";
-		this.sType = "";
+
+		this.hDistance = "";
+		this.hRate = "";
+
+		this.rDistance = "";
+		this.rType = "Any";
+		this.halal = true;
+
+		this.mType = "Groceries";
+		this.mDistance = "";
+
+		this.aDistance = "";
+		this.aFee = "";
 	}
 }

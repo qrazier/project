@@ -1,3 +1,179 @@
 page-hotel-list {
-
+    .grid{
+        border: 1px solid black;
+    }
+    .row{
+        width: 80%;
+        max-height: 75px;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+    }
+    .row:nth-child(even){
+        background: #ccc;
+    }
+    .row:nth-child(odd){
+        background: #fff;
+    }
+    .col{
+        //width: 100px !important;
+        border: 1px solid black;
+    }
+    .col:nth-child(0n+1){
+        max-width: 100px;
+    }
+    .col:nth-child(0n+2){
+        max-width: 100px;
+    }
+    .col:nth-child(0n+3){
+        max-width: 100px;
+    }
+    .col:nth-child(0n+4){
+        max-width: 100px;
+    }
+    .col:nth-child(0n+5){
+        max-width: 100px;
+    }
+    .col:nth-child(0n+6){
+        max-width: 200px;
+        
+        overflow: auto;
+    }
+    .mall{
+        .grid{
+            border: 1px solid black;
+        }
+        .row{
+            width: 80%;
+            max-height: 75px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+        .row:nth-child(even){
+            background: #ccc;
+        }
+        .row:nth-child(odd){
+            background: #fff;
+        }
+        .col{
+            //width: 100px !important;
+            border: 1px solid black;
+        }
+        .col:nth-child(0n+1){
+            max-width: 35px;
+        }
+        .col:nth-child(0n+2){
+            max-width: 80px;
+        }
+        .col:nth-child(0n+3){
+            max-width: 100px;
+        }
+        .col:nth-child(0n+4){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+5){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+6){
+            max-width: 100px;
+        }
+        .col:nth-child(0n+7){
+            max-width: 300px;
+            
+            overflow: auto;
+        }
+    }
+    .restaurant{
+        .grid{
+            border: 1px solid black;
+        }
+        .row{
+            width: 80%;
+            max-height: 75px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+        .row:nth-child(even){
+            background: #ccc;
+        }
+        .row:nth-child(odd){
+            background: #fff;
+        }
+        .col{
+            //width: 100px !important;
+            border: 1px solid black;
+        }
+        .col:nth-child(0n+1){
+            max-width: 35px;
+        }
+        .col:nth-child(0n+2){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+3){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+4){
+            max-width: 85px;
+        }
+        .col:nth-child(0n+5){
+            max-width: 65px;
+        }
+        .col:nth-child(0n+6){
+            max-width: 43px;
+        }
+        .col:nth-child(0n+7){
+            max-width: 80px;
+        }
+        .col:nth-child(0n+8){
+            max-width: 200px;
+            overflow: auto;
+        }
+    }
+    .attraction{
+        .grid{
+            border: 1px solid black;
+        }
+        .row{
+            width: 80%;
+            max-height: 75px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid black;
+        }
+        .row:nth-child(even){
+            background: #ccc;
+        }
+        .row:nth-child(odd){
+            background: #fff;
+        }
+        .col{
+            //width: 100px !important;
+            border: 1px solid black;
+        }
+        .col:nth-child(0n+1){
+            max-width: 35px;
+        }
+        .col:nth-child(0n+2){
+            max-width: 80px;
+        }
+        .col:nth-child(0n+3){
+            max-width: 100px;
+        }
+        .col:nth-child(0n+4){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+5){
+            max-width: 75px;
+        }
+        .col:nth-child(0n+6){
+            max-width: 100px;
+        }
+        .col:nth-child(0n+7){
+            max-width: 300px;
+            
+            overflow: auto;
+        }
+    }
 }

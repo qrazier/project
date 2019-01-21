@@ -3,13 +3,7 @@ import { ModalController, NavController, NavParams } from 'ionic-angular';
 
 declare var google;
 let map: any;
-//let infowindow: any;
-/*let options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
-*/
+
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html',
@@ -38,10 +32,15 @@ export class MapPage {
 
     this.start = "Monorail " + this.item.station;
     this.end = this.item.name + ', ' + this.item.station;
+
+    if(this.start == "Monorail KL Sentral") {this.start = "4MMQ+54 Kuala Lumpur, Federal Territory of Kuala Lumpur";}
+    else if(this.start == "Monorail Imbi") {this.start = "4PV5+4Q Kuala Lumpur, Federal Territory of Kuala Lumpur";}
+    else if(this.start == "Monorail Bukit Bintang") {this.start = "4PW6+CH Kuala Lumpur, Federal Territory of Kuala Lumpur";}
+    else if(this.start == "Monorail Medan Tuanku") {this.start = "5M5X+PG Kuala Lumpur, Federal Territory of Kuala Lumpur";}
+    else if(this.start == "Monorail Chow Kit") {this.start = "5M8X+X9 Kuala Lumpur, Federal Territory of Kuala Lumpur";} 
   }
 
   ionViewDidLoad() {
-    //console.log("Hello");
     this.initMap();
     this.mapFunc();
   }
@@ -53,20 +52,6 @@ export class MapPage {
       disableDefaultUI: true,
       clickableIcons: false,
     });
-
-    /*infowindow = new google.maps.InfoWindow();
-    var service = new google.maps.places.PlacesService(map);
-    service.nearbySearch({
-      location: { lat: 3.13288, lng: 101.6856413 },
-      radius: 1000,
-      type: ['food']
-    }, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK) {
-        for (var i = 0; i < results.length; i++) {
-          this.createMarkerII(results[i]);
-        }
-      }
-    });*/
   }
 
   mapFunc() {
@@ -77,23 +62,15 @@ export class MapPage {
   }
 
   calculateAndDisplayRoute() {
-    //let a = new google.maps.LatLng(3.1348295, 101.68669799999998);
-    //let b = new google.maps.LatLng(3.136, 101.68670);
-
-    /*if (this.rest) {
-      this.createMarker(a, this.start);
-    }
-    */
     this.requestDirection(this.start, this.end);
   }
 
-  requestDirection(start, end) {
+  requestDirection(start: string, end: string) {
     this.directionsService.route({
       origin: start,
       destination: end,
-      //destination: "3.1348295, 101.68669799999998",
       travelMode: 'WALKING',
-    }, (response, status) => {
+    }, (response: any, status: string) => {
       if (status === 'OK') {
         this.directionsDisplay.setDirections(response);
       } else {
@@ -101,11 +78,6 @@ export class MapPage {
       }
     });
   }
-
-  /*public restaurant() {
-    let profileModal = this.modalCtrl.create('RestaurantPage', { item: this.item });
-    profileModal.present();
-  }*/
 
   direction() {
     if (this.showHide === true) {
@@ -120,33 +92,4 @@ export class MapPage {
     let profileModal = this.modalCtrl.create('InformationPage', { item: this.item, info: this.info });
     profileModal.present();
   }
-
-  /*createMarker(latlng, title) {
-
-    var infoWindow = new google.maps.InfoWindow({ map: map });
-
-    var marker = new google.maps.Marker({
-      position: latlng,
-      title: title,
-      map: map
-    });
-
-    google.maps.event.addListener(marker, 'click', function () {
-      infoWindow.setContent(title);
-      infoWindow.open(this.map, marker);
-    });
-  }
-
-  createMarkerII(place) {
-    var placeLoc = place.geometry.location;
-    var marker = new google.maps.Marker({
-      map: map,
-      position: placeLoc
-    });
-
-    google.maps.event.addListener(marker, 'click', function () {
-      infowindow.setContent(place.name);
-      infowindow.open(map, this);
-    });
-  }*/
 }

@@ -1,9 +1,3 @@
-<!--
-  Generated template for the HotelListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -27,22 +21,31 @@
     </ion-item>
   </ion-list>
 
-  <ion-grid>Hotel
+  <ion-grid>hotel
     <ion-row>
       <ion-col>
-        <b>Station</b>
+        <b>key</b>
       </ion-col>
       <ion-col>
-        <b>Name</b>
+        <b>station</b>
       </ion-col>
       <ion-col>
-        <b>Rate (RM)</b>
+        <b>name</b>
       </ion-col>
       <ion-col>
-        <b>Distance (m)</b>
+        <b>hRate</b>
+      </ion-col>
+      <ion-col>
+        <b>hDistance</b>
+      </ion-col>
+      <ion-col>
+        <b>image</b>
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let item of (hotelReff$ | async)?.slice().reverse()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -55,53 +58,95 @@
       <ion-col>
         {{item.hDistance}}
       </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid>Mall
-    <ion-row>
       <ion-col>
-        <b>Station</b>
-      </ion-col>
-      <ion-col>
-        <b>Name</b>
-      </ion-col>
-      <ion-col>
-        <b>Distance (m)</b>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let item of (mallRef$ | async)?.slice().reverse()">
-      <ion-col>
-        {{item.station}}
-      </ion-col>
-      <ion-col>
-        {{item.name}}
-      </ion-col>
-      <ion-col>
-        {{item.distance}}
+        {{item.image}}
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  <div class="mall">
+    <ion-grid>mall
+      <ion-row>
+        <ion-col>
+          <b>key</b>
+        </ion-col>
+        <ion-col>
+          <b>station</b>
+        </ion-col>
+        <ion-col>
+          <b>name</b>
+        </ion-col>
+        <ion-col>
+          <b>distance</b>
+        </ion-col>
+        <ion-col>
+          <b>type</b>
+        </ion-col>
+        <ion-col>
+          <b>phone</b>
+        </ion-col>
+        <ion-col>
+          <b>image</b>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of (mallRef$ | async)?.slice()">
+        <ion-col>
+          {{item.key}}
+        </ion-col>
+        <ion-col>
+          {{item.station}}
+        </ion-col>
+        <ion-col>
+          {{item.name}}
+        </ion-col>
+        <ion-col>
+          {{item.distance}}
+        </ion-col>
+        <ion-col>
+          {{item.type}}
+        </ion-col>
+        <ion-col>
+          {{item.phone}}
+        </ion-col>
+        <ion-col>
+          {{item.image}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+<div class="restaurant">
   <ion-grid>Restaurant
     <ion-row>
       <ion-col>
-        <b>Station</b>
+        <b>key</b>
       </ion-col>
       <ion-col>
-        <b>Name</b>
+        <b>station</b>
       </ion-col>
       <ion-col>
-        <b>Type</b>
+        <b>name</b>
       </ion-col>
       <ion-col>
-        <b>Distance (m)</b>
+        <b>type</b>
       </ion-col>
       <ion-col>
-        <b>Halal</b>
+        <b>distance</b>
+      </ion-col>
+      <ion-col>
+        <b>halal</b>
+      </ion-col>
+      <ion-col>
+        <b>phone</b>
+      </ion-col>
+      <ion-col>
+        <b>image</b>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of (cafeRef$ | async)?.slice().reverse()">
+    <ion-row *ngFor="let item of (cafeRef$ | async)?.slice()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -117,8 +162,17 @@
       <ion-col>
         {{item.halal}}
       </ion-col>
+      <ion-col>
+        {{item.phone}}
+      </ion-col>
+      <ion-col>
+        {{item.image}}
+      </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of (ffRef$ | async)?.slice().reverse()">
+    <ion-row *ngFor="let item of (ffRef$ | async)?.slice()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -126,7 +180,7 @@
         {{item.name}}
       </ion-col>
       <ion-col>
-        Fast Food
+        FastFood
       </ion-col>
       <ion-col>
         {{item.distance}}
@@ -134,8 +188,17 @@
       <ion-col>
         {{item.halal}}
       </ion-col>
+      <ion-col>
+        {{item.phone}}
+      </ion-col>
+      <ion-col>
+        {{item.image}}
+      </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of (familyRef$ | async)?.slice().reverse()">
+    <ion-row *ngFor="let item of (familyRef$ | async)?.slice()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -143,7 +206,7 @@
         {{item.name}}
       </ion-col>
       <ion-col>
-        Family Style
+        FamilyStyle
       </ion-col>
       <ion-col>
         {{item.distance}}
@@ -151,8 +214,17 @@
       <ion-col>
         {{item.halal}}
       </ion-col>
+      <ion-col>
+        {{item.phone}}
+      </ion-col>
+      <ion-col>
+        {{item.image}}
+      </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of (japRef$ | async)?.slice().reverse()">
+    <ion-row *ngFor="let item of (japRef$ | async)?.slice()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -168,25 +240,42 @@
       <ion-col>
         {{item.halal}}
       </ion-col>
+      <ion-col>
+        {{item.phone}}
+      </ion-col>
+      <ion-col>
+        {{item.image}}
+      </ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
+<div class="attraction">
   <ion-grid>Attraction
     <ion-row>
       <ion-col>
-        <b>Station</b>
+        <b>key</b>
       </ion-col>
       <ion-col>
-        <b>Name</b>
+        <b>station</b>
       </ion-col>
       <ion-col>
-        <b>Fee (RM)</b>
+        <b>name</b>
       </ion-col>
       <ion-col>
-        <b>Distance (m)</b>
+        <b>fee</b>
+      </ion-col>
+      <ion-col>
+        <b>distance</b>
+      </ion-col>
+      <ion-col>
+        <b>image</b>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let item of (attractionRef$ | async)?.slice().reverse()">
+    <ion-row *ngFor="let item of (attractionRef$ | async)?.slice()">
+      <ion-col>
+        {{item.key}}
+      </ion-col>
       <ion-col>
         {{item.station}}
       </ion-col>
@@ -194,11 +283,16 @@
         {{item.name}}
       </ion-col>
       <ion-col>
-          {{item.fee}}
-        </ion-col>
+        {{item.fee}}
+      </ion-col>
       <ion-col>
         {{item.distance}}
       </ion-col>
+      <ion-col>
+        {{item.image}}
+      </ion-col>
     </ion-row>
   </ion-grid>
+</div>
+
 </ion-content>
